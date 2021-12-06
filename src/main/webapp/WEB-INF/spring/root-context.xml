@@ -30,6 +30,6 @@
     <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
       <constructor-arg index="0" ref="sqlSessionFactory" />
    </bean>
-<!--    	<context:component-scan base-package="com.bsy.DAO"></context:component-scan> -->
-<!-- 	<context:component-scan base-package="com.bsy.Service"></context:component-scan> -->
+   	<context:component-scan base-package="com.bsy.DAO"></context:component-scan>
+	<context:component-scan base-package="com.bsy.Service"></context:component-scan>
 </beans>

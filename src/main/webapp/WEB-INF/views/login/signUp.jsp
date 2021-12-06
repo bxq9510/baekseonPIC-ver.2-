@@ -44,7 +44,7 @@
 					<h2>Sign Up</h2>
 				</header>
 				<section>
-					<form action="#" method="post">
+					<form action="addUsr" method="post">
 						<div class="row gtr-uniform gtr-50">
 							<div class="col-3 off-4 col-12-xsmall">
 								<input type="text" name="id" id="id" value=""
@@ -54,12 +54,11 @@
 								<input type="button" value="Check" />
 							</div>
 							<div class="col-4 off-4 col-12-xsmall">
-								<input type="password" name="pw" id="password" value=""
+								<input type="password" name="pw" id="pw" value=""
 									placeholder="PASSWORD" />
 							</div>
 							<div class="col-4 off-4 col-12-xsmall">
-								<input type="password" name="pw" id="password" value=""
-									placeholder="VERIFY PASSWORD" />
+								<input type="password" value=""	placeholder="VERIFY PASSWORD" />
 							</div>
 							<div class="col-4 off-4 col-12-xsmall">
 								<input type="text" name="name" id="name" value=""

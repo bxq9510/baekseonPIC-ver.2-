@@ -34,7 +34,7 @@
 							<li><a href="#">Free</a></li>
 							<li><a href="#">Guest</a></li>
 						</ul></li>
-					<li><a href="#" class="button primary">Log In</a></li>
+					<li><a href="logIn" class="button primary">Log In</a></li>
 				</ul>
 			</nav>
 		</header>
@@ -44,15 +44,15 @@
 					<h2>Log In</h2>
 				</header>
 				<section class="special">
-					<form action="#" method="post">
+					<form action="loginProcess" method="post">
 						<div class="row gtr-uniform gtr-50">
 							<div class="col-4 off-4 col-12-xsmall">
 								<input type="text" name="id" id="id" value=""
 									placeholder="ID" />
 							</div>
 							<div class="col-4 off-4 col-12-xsmall">
-								<input type="password" name="pw" id="password" value=""
-									placeholder="Password" />
+								<input type="password" name="pw" id="pw" value=""
+									placeholder="PASSWORD" />
 							</div>
 							<div class="col-4 off-4">
 								<ul class="actions">

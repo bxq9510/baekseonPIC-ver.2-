@@ -19,14 +19,6 @@ public class PicController {
 	public String main(Locale locale, Model model) throws Exception{
 		return "/mainForm";		
 	}
-	@RequestMapping(value = "/logIn", method = RequestMethod.GET)
-	public String logIn(Locale locale, Model model) throws Exception{
-		return "login/logIn";		
-	}
-	@RequestMapping(value = "/signUp", method = RequestMethod.GET)
-	public String signUp(Locale locale, Model model) throws Exception{
-		return "login/signUp";		
-	}
 	@RequestMapping(value = "/picList", method = RequestMethod.GET)
 	public String picList(@RequestParam("cat") String cat, Locale locale, Model model) throws Exception{
 		return "pic/picList";		
