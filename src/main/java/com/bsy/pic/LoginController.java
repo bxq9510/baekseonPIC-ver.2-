@@ -55,7 +55,7 @@ public class LoginController {
 				session.setAttribute("usrName", tempUsrvo.getName());
 				session.setAttribute("usrId", tempUsrvo.getId());
 				session.setAttribute("usrDay", tempUsrvo.getDay());
-				tagetUrl= "/login_mainForm";
+				tagetUrl= "/after_mainForm";
 			}else {
 				response.setContentType("text/html; charset=UTF-8");
 				PrintWriter out = response.getWriter();

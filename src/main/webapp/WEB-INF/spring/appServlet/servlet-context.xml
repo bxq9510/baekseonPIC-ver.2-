@@ -21,6 +21,18 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	<!--  인터셉터 설정 -->
+	<beans:bean id="AuthLoginInterceptor" class="com.bsy.Interceptor.AuthLoginInterceptor">
+	</beans:bean>
+	<!--  인터셉터에 적용할 컨트롤러 설정 -->
+	<interceptors>
+		<interceptor>
+			<mapping path="/input**"/>
+			<exclude-mapping path="/log**"/>
+			<beans:ref bean="AuthLoginInterceptor" />
+		</interceptor>	
+	</interceptors>	
+	
 	<context:component-scan base-package="com.bsy.pic" />
 	
 	

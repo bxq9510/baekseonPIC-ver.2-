@@ -17,15 +17,12 @@ public class PicController {
 	// 메인화면 이동
 	@RequestMapping(value = "/mainForm", method = RequestMethod.GET)
 	public String main(Locale locale, Model model) throws Exception{
+		
 		return "/mainForm";		
 	}
 	@RequestMapping(value = "/picList", method = RequestMethod.GET)
 	public String picList(@RequestParam("cat") String cat, Locale locale, Model model) throws Exception{
 		return "pic/picList";		
-	}
-	@RequestMapping(value = "/picInput", method = RequestMethod.GET)
-	public String picInput(Locale locale, Model model) throws Exception{
-		return "pic/picInput";		
 	}
 	@RequestMapping(value = "/brdList", method = RequestMethod.GET)
 	public String brdList(@RequestParam("cat") String cat, Locale locale, Model model) throws Exception{

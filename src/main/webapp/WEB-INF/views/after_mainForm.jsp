@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -13,27 +14,28 @@
 
 			<!-- Header -->
 				<header id="header">
-					<h1 id="logo"><a href="mainForm">BAEKSEON's PIC.</a></h1>
+					<h1 id="logo"><a href="after_mainForm" class="icon solid fa-camera"> BAEKSEON's PIC.</a></h1>
 					<nav id="nav">
 						<ul>
-							<li><a href="mainForm">Home</a></li>
+							<li><a href="after_mainForm">Home</a></li>
 							<li>
 								<a href="#">Category</a>
 								<ul>
-									<li><a href="picList?cat=music">Music</a></li>
-									<li><a href="picList?cat=food">Food</a></li>
-									<li><a href="picList?cat=fashion">Fashion</a></li>
-									<li><a href="picList?cat=car">Car</a></li>
-									<li><a href="picList?cat=travel">Travel</a></li>
+									<li><a href="after_picList?cat=music">Music</a></li>
+									<li><a href="after_picList?cat=food">Food</a></li>
+									<li><a href="after_picList?cat=fashion">Fashion</a></li>
+									<li><a href="after_picList?cat=car">Car</a></li>
+									<li><a href="after_picList?cat=travel">Travel</a></li>
 								</ul>
 							</li>
 							<li><a href="#">Board</a>
 								<ul>
-									<li><a href="brdList?cat=free">Free</a></li>
-									<li><a href="brdList?cat=guest">Guest</a></li>
+									<li><a href="after_brdList?cat=free">Free</a></li>
+									<li><a href="after_brdList?cat=guest">Guest</a></li>
 								</ul>
 							</li>
-							<li><a href="logIn" class="button primary">Log In</a></li>
+							<li><a href="#" class="icon solid fa-user-circle">${sessionScope.usrName}(${sessionScope.usrId}) </a></li>
+							<li><a href="logOut" class="button primary">Log Out</a></li>
 						</ul>
 					</nav>
 				</header>

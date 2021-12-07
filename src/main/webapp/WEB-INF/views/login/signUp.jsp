@@ -13,31 +13,34 @@
 <body class="is-preload landing">
 	<div id="page-wrapper">
 
-		<!-- Header -->
-		<header id="header">
-			<h1 id="logo">
-				<a href="mainForm">BAEKSEON's PIC.</a>
-			</h1>
-			<nav id="nav">
-				<ul>
-					<li><a href="mainForm">Home</a></li>
-					<li><a href="#">Category</a>
+			<!-- Header -->
+				<header id="header">
+					<h1 id="logo"><a href="mainForm">BAEKSEON's PIC.</a></h1>
+					<nav id="nav">
 						<ul>
-							<li><a href="#">Music</a></li>
-							<li><a href="#">Food</a></li>
-							<li><a href="#">Fashion</a></li>
-							<li><a href="#">Car</a></li>
-							<li><a href="#">Travel</a></li>
-						</ul></li>
-					<li><a href="#">Board</a>
-						<ul>
-							<li><a href="#">Free</a></li>
-							<li><a href="#">Guest</a></li>
-						</ul></li>
-					<li><a href="logIn" class="button primary">Log In</a></li>
-				</ul>
-			</nav>
-		</header>
+							<li><a href="mainForm">Home</a></li>
+							<li>
+								<a href="#">Category</a>
+								<ul>
+									<li><a href="picList?cat=music">Music</a></li>
+									<li><a href="picList?cat=food">Food</a></li>
+									<li><a href="picList?cat=fashion">Fashion</a></li>
+									<li><a href="picList?cat=car">Car</a></li>
+									<li><a href="picList?cat=travel">Travel</a></li>
+								</ul>
+							</li>
+							<li><a href="#">Board</a>
+								<ul>
+									<li><a href="brdList?cat=free">Free</a></li>
+									<li><a href="brdList?cat=guest">Guest</a></li>
+								</ul>
+							</li>
+							<li><a href="logIn" class="button primary">Log In</a></li>
+						</ul>
+					</nav>
+				</header>
+
+			<!-- Banner -->
 		<div id="main" class="wrapper style1">
 			<div class="container">
 				<header class="major">
