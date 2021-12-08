@@ -33,7 +33,7 @@ public class LoginController {
 	}
 //	@RequestMapping(value = "/afterLogin", method = RequestMethod.GET)
 //	public String afterLogin(Locale locale, Model model) throws Exception{
-//		return "/login_mainForm";		
+//		return "/after_mainForm";		
 //	}
 	@RequestMapping(value = "/loginProcess", method = RequestMethod.POST)
 	public String loginProcess(UsrVO usrvo, HttpServletRequest request, HttpServletResponse response, Locale locale, Model model) throws Exception{

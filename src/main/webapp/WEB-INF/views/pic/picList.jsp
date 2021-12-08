@@ -23,17 +23,17 @@
 							<li>
 								<a href="#">Category</a>
 								<ul>
-									<li><a href="picList?cat=music">Music</a></li>
-									<li><a href="picList?cat=food">Food</a></li>
-									<li><a href="picList?cat=fashion">Fashion</a></li>
-									<li><a href="picList?cat=car">Car</a></li>
-									<li><a href="picList?cat=travel">Travel</a></li>
+									<li><a href="picList?cat=Music">Music</a></li>
+									<li><a href="picList?cat=Food">Food</a></li>
+									<li><a href="picList?cat=Fashion">Fashion</a></li>
+									<li><a href="picList?cat=Car">Car</a></li>
+									<li><a href="picList?cat=Travel">Travel</a></li>
 								</ul>
 							</li>
 							<li><a href="#">Board</a>
 								<ul>
-									<li><a href="brdList?cat=free">Free</a></li>
-									<li><a href="brdList?cat=guest">Guest</a></li>
+									<li><a href="brdList?cat=Free">Free</a></li>
+									<li><a href="brdList?cat=Guest">Guest</a></li>
 								</ul>
 							</li>
 							<li><a href="logIn" class="button primary">Log In</a></li>

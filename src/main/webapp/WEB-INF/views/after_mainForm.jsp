@@ -21,17 +21,17 @@
 							<li>
 								<a href="#">Category</a>
 								<ul>
-									<li><a href="after_picList?cat=music">Music</a></li>
-									<li><a href="after_picList?cat=food">Food</a></li>
-									<li><a href="after_picList?cat=fashion">Fashion</a></li>
-									<li><a href="after_picList?cat=car">Car</a></li>
-									<li><a href="after_picList?cat=travel">Travel</a></li>
+									<li><a href="after_picList?cat=Music">Music</a></li>
+									<li><a href="after_picList?cat=Food">Food</a></li>
+									<li><a href="after_picList?cat=Fashion">Fashion</a></li>
+									<li><a href="after_picList?cat=Car">Car</a></li>
+									<li><a href="after_picList?cat=Travel">Travel</a></li>
 								</ul>
 							</li>
 							<li><a href="#">Board</a>
 								<ul>
-									<li><a href="after_brdList?cat=free">Free</a></li>
-									<li><a href="after_brdList?cat=guest">Guest</a></li>
+									<li><a href="after_brdList?cat=Free">Free</a></li>
+									<li><a href="after_brdList?cat=Guest">Guest</a></li>
 								</ul>
 							</li>
 							<li><a href="#" class="icon solid fa-user-circle">${sessionScope.usrName}(${sessionScope.usrId}) </a></li>

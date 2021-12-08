@@ -10,9 +10,18 @@ private int endPage;
 private int startPage; // 페이지 그룹
 private boolean prev;
 private boolean next;
+private String cat;
 //검색용 변수 2개 추가
 private String searchType;
 private String searchKeyword;
+
+public String getCat() {
+	return cat;
+}
+
+public void setCat(String cat) {
+	this.cat = cat;
+}
 
 public String getSearchType() {
    return searchType;

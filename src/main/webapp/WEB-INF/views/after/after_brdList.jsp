@@ -11,96 +11,108 @@
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/resources/assets/css/main.css" />
 </head>
+<style>
+a.tb {
+	border: 0;
+	color: inherit;
+	display: inline-block;
+	height: inherit;
+	line-height: inherit;
+	outline: 0;
+}
+
+a.tb:before {
+	margin-right: 0.5em;
+}
+
+active>a.tb {
+	color: #e44c65;
+}
+</style>
 <body class="is-preload landing">
 	<div id="page-wrapper">
 
-			<!-- Header -->
-				<header id="header">
-					<h1 id="logo"><a href="after_mainForm" class="icon solid fa-camera"> BAEKSEON's PIC.</a></h1>
-					<nav id="nav">
+		<!-- Header -->
+		<header id="header">
+			<h1 id="logo">
+				<a href="after_mainForm" class="icon solid fa-camera">
+					BAEKSEON's PIC.</a>
+			</h1>
+			<nav id="nav">
+				<ul>
+					<li><a href="after_mainForm">Home</a></li>
+					<li><a href="#">Category</a>
 						<ul>
-							<li><a href="after_mainForm">Home</a></li>
-							<li>
-								<a href="#">Category</a>
-								<ul>
-									<li><a href="after_picList?cat=music">Music</a></li>
-									<li><a href="after_picList?cat=food">Food</a></li>
-									<li><a href="after_picList?cat=fashion">Fashion</a></li>
-									<li><a href="after_picList?cat=car">Car</a></li>
-									<li><a href="after_picList?cat=travel">Travel</a></li>
-								</ul>
-							</li>
-							<li><a href="#">Board</a>
-								<ul>
-									<li><a href="after_brdList?cat=free">Free</a></li>
-									<li><a href="after_brdList?cat=guest">Guest</a></li>
-								</ul>
-							</li>
-							<li><a href="#" class="icon solid fa-user-circle">${sessionScope.usrName}(${sessionScope.usrId}) </a></li>
-							<li><a href="logOut" class="button primary">Log Out</a></li>
-						</ul>
-					</nav>
-				</header>
+							<li><a href="after_picList?cat=Music">Music</a></li>
+							<li><a href="after_picList?cat=Food">Food</a></li>
+							<li><a href="after_picList?cat=Fashion">Fashion</a></li>
+							<li><a href="after_picList?cat=Car">Car</a></li>
+							<li><a href="after_picList?cat=Travel">Travel</a></li>
+						</ul></li>
+					<li><a href="#">Board</a>
+						<ul>
+							<li><a href="after_brdList?cat=Free">Free</a></li>
+							<li><a href="after_brdList?cat=Guest">Guest</a></li>
+						</ul></li>
+					<li><a href="#" class="icon solid fa-user-circle">${sessionScope.usrName}(${sessionScope.usrId})
+					</a></li>
+					<li><a href="logOut" class="button primary">Log Out</a></li>
+				</ul>
+			</nav>
+		</header>
 
-			<!-- Banner -->
+		<!-- Banner -->
 		<div id="main" class="wrapper style1">
 			<div class="container">
 				<header>
-					<h2>Free Board</h2>
+					<h2>${pagevo.cat} Board</h2>
 				</header>
 				<section>
 					<div class="row gtr-0 gtr-uniform">
 						<div class="row col-1 off-10">
-							<input type="button" value="New PIC"
+							<input type="button" value="New Post"
 								onclick="location.href='inputBrd'" />
 						</div>
 					</div>
 					<div class="row gtr-0 gtr-uniform">
-						<div class="row col-1 off-10">
-							&nbsp;
-						</div>
+						<div class="row col-1 off-10">&nbsp;</div>
 					</div>
 					<div>
 						<div class="table-wrapper">
 							<table>
 								<thead>
 									<tr>
+										<th>No.</th>
+										<th>Title</th>
 										<th>Name</th>
-										<th>Description</th>
-										<th>Price</th>
+										<th>Views</th>
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td>Item 1</td>
-										<td>Ante turpis integer aliquet porttitor.</td>
-										<td>29.99</td>
-									</tr>
-									<tr>
-										<td>Item 2</td>
-										<td>Vis ac commodo adipiscing arcu aliquet.</td>
-										<td>19.99</td>
-									</tr>
-									<tr>
-										<td>Item 3</td>
-										<td>Morbi faucibus arcu accumsan lorem.</td>
-										<td>29.99</td>
-									</tr>
-									<tr>
-										<td>Item 4</td>
-										<td>Vitae integer tempus condimentum.</td>
-										<td>19.99</td>
-									</tr>
-									<tr>
-										<td>Item 5</td>
-										<td>Ante turpis integer aliquet porttitor.</td>
-										<td>29.99</td>
-									</tr>
+									<c:forEach items="${brdlist}" var="vo" varStatus="status">
+										<tr>
+											<td>${status.count + pageVO.perPageNum * (pageVO.page -1)}</td>
+											<td><a href="brdView?no=${vo.no}&cat=${pagevo.cat}" class="tb">${vo.title}</a></td>
+											<td><a href='#' class="tb">${vo.name}</a></td>
+											<td>${vo.views}</td>
+										</tr>
+									</c:forEach>
 								</tbody>
 								<tfoot>
 									<tr>
-										<td colspan="2"></td>
-										<td>100.00</td>
+										<td><c:if test="${pageVO.prev}">
+												<a
+													href="after_brdList?page=${pageVO.startPage-1}&cat=${pageVO.cat}"
+													class="tb">[이전]</a>
+											</c:if> <c:forEach begin="${pageVO.startPage}"
+												end="${pageVO.endPage}" var="idx">
+												<a href="after_brdList?page=${idx}&cat=${pageVO.cat}"
+													class="tb">${idx}</a>
+											</c:forEach> <c:if test="${pageVO.next}">
+												<a
+													href="after_brdList?page=${pageVO.endPage+1}&cat=${pageVO.cat}"
+													class="tb">[Next]</a>
+											</c:if></td>
 									</tr>
 								</tfoot>
 							</table>

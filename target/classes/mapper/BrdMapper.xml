@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.bsy.DAO.IF_BrdDAO">
+	<insert id="insert">
+		insert into board
+		values (board_seq.nextval, #{title}, #{name}, #{post}, #{cat}, 0, default)
+	</insert>
+	<select id="selectone" resultType="com.bsy.VO.BrdVO">
+		select * from board where no = #{no}
+	</select>
+	<select id="brdcnt" resultType="int">
+		select count(*) from board
+	</select>
+	<select id="selectall" resultType="com.bsy.VO.BrdVO">
+		select * from
+		(select rownum as num, b.* from	(select * from board where cat=#{cat} order by day desc) b)
+		where num between #{startNo}+1 and #{startNo} + #{perPageNum}
+	</select>
+	<update id="updateView">
+		update board set views=views+1 where no = #{no}
+	</update>
+</mapper>

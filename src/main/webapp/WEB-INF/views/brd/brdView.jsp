@@ -13,66 +13,57 @@
 <body class="is-preload landing">
 	<div id="page-wrapper">
 
-			<!-- Header -->
-				<header id="header">
-					<h1 id="logo"><a href="mainForm">BAEKSEON's PIC.</a></h1>
-					<nav id="nav">
+		<!-- Header -->
+		<header id="header">
+			<h1 id="logo">
+				<a href="after_mainForm" class="icon solid fa-camera">
+					BAEKSEON's PIC.</a>
+			</h1>
+			<nav id="nav">
+				<ul>
+					<li><a href="after_mainForm">Home</a></li>
+					<li><a href="#">Category</a>
 						<ul>
-							<li><a href="mainForm">Home</a></li>
-							<li>
-								<a href="#">Category</a>
-								<ul>
-									<li><a href="picList?cat=Music">Music</a></li>
-									<li><a href="picList?cat=Food">Food</a></li>
-									<li><a href="picList?cat=Fashion">Fashion</a></li>
-									<li><a href="picList?cat=Car">Car</a></li>
-									<li><a href="picList?cat=Travel">Travel</a></li>
-								</ul>
-							</li>
-							<li><a href="#">Board</a>
-								<ul>
-									<li><a href="brdList?cat=Free">Free</a></li>
-									<li><a href="brdList?cat=Guest">Guest</a></li>
-								</ul>
-							</li>
-							<li><a href="logIn" class="button primary">Log In</a></li>
-						</ul>
-					</nav>
-				</header>
+							<li><a href="after_picList?cat=Music">Music</a></li>
+							<li><a href="after_picList?cat=Food">Food</a></li>
+							<li><a href="after_picList?cat=Fashion">Fashion</a></li>
+							<li><a href="after_picList?cat=Car">Car</a></li>
+							<li><a href="after_picList?cat=Travel">Travel</a></li>
+						</ul></li>
+					<li><a href="#">Board</a>
+						<ul>
+							<li><a href="after_brdList?cat=Free">Free</a></li>
+							<li><a href="after_brdList?cat=Guest">Guest</a></li>
+						</ul></li>
+					<li><a href="#" class="icon solid fa-user-circle">${sessionScope.usrName}(${sessionScope.usrId})
+					</a></li>
+					<li><a href="logOut" class="button primary">Log Out</a></li>
+				</ul>
+			</nav>
+		</header>
 
-			<!-- Banner -->
+		<!-- Banner -->
 		<div id="main" class="wrapper style1">
 			<div class="container">
-				<header class="major">
-					<h2>Sign Up</h2>
-				</header>
-				<section>
-					<form action="addUsr" method="post">
+				<h2>${cat}Board</h2>
+				<section class="special">
+					<form method="post" action="#">
 						<div class="row gtr-uniform gtr-50">
-							<div class="col-3 off-4 col-12-xsmall">
-								<input type="text" name="id" id="id" value=""
-									placeholder="CREATE YOUR ID" />
-							</div>
-							<div class="col-1">
-								<input type="button" value="Check" />
-							</div>
-							<div class="col-4 off-4 col-12-xsmall">
-								<input type="password" name="pw" id="pw" value=""
-									placeholder="PASSWORD" />
-							</div>
-							<div class="col-4 off-4 col-12-xsmall">
-								<input type="password" value=""	placeholder="VERIFY PASSWORD" />
-							</div>
-							<div class="col-4 off-4 col-12-xsmall">
-								<input type="text" name="name" id="name" value=""
-									placeholder="CHOOSE YOUR USERNAME" />
-							</div>
-							<div class="col-4 off-4">
-								<ul class="actions">
-									<li><input type="submit" value="Submit" class="primary" /></li>
-									<li><input type="reset" value="Reset" /></li>
-								</ul>
-							</div>
+							<ul class="col-12 alt" style="text-align: left">
+								<li>&emsp;${brd.title}</li>
+								<li>&emsp;${brd.name}</li>
+								<div class="col-12">
+									<textarea name="post" id="post" rows="6" readonly>&ensp;${brd.post}</textarea>
+								</div>
+								<li>&emsp;${brd.day} / views: ${brd.views}</li>
+								<li>&emsp;Comment</li>
+							</ul>
+							<!-- 							<div class="col-12"> -->
+							<!-- 								<ul class="actions"> -->
+							<!-- 									<li><input type="submit" value="Register a Post" class="primary" /></li> -->
+							<!-- 									<li><input type="reset" value="Reset" /></li> -->
+							<!-- 								</ul> -->
+							<!-- 							</div> -->
 						</div>
 					</form>
 				</section>

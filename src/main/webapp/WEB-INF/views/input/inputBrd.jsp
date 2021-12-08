@@ -22,17 +22,17 @@
 							<li>
 								<a href="#">Category</a>
 								<ul>
-									<li><a href="after_picList?cat=music">Music</a></li>
-									<li><a href="after_picList?cat=food">Food</a></li>
-									<li><a href="after_picList?cat=fashion">Fashion</a></li>
-									<li><a href="after_picList?cat=car">Car</a></li>
-									<li><a href="after_picList?cat=travel">Travel</a></li>
+									<li><a href="after_picList?cat=Music">Music</a></li>
+									<li><a href="after_picList?cat=Food">Food</a></li>
+									<li><a href="after_picList?cat=Fashion">Fashion</a></li>
+									<li><a href="after_picList?cat=Car">Car</a></li>
+									<li><a href="after_picList?cat=Travel">Travel</a></li>
 								</ul>
 							</li>
 							<li><a href="#">Board</a>
 								<ul>
-									<li><a href="after_brdList?cat=free">Free</a></li>
-									<li><a href="after_brdList?cat=guest">Guest</a></li>
+									<li><a href="after_brdList?cat=Free">Free</a></li>
+									<li><a href="after_brdList?cat=Guest">Guest</a></li>
 								</ul>
 							</li>
 							<li><a href="#" class="icon solid fa-user-circle">${sessionScope.usrName}(${sessionScope.usrId}) </a></li>
@@ -44,55 +44,28 @@
 			<!-- Banner -->
 		<div id="main" class="wrapper style1">
 			<div class="container">
-				<h2>New PIC</h2>
+				<h2>New Post</h2>
 				<section class="special">
-					<form method="post" action="#">
+					<form method="post" action="brdSave">
+						<input type="hidden" name="id" value=${usrid} />
+						<input type="hidden" name="name" value=${usrname} />
 						<div class="row gtr-uniform gtr-50">
-							<div class="col-6 col-12-xsmall">
-								<input type="text" name="name" id="name" value=""
-									placeholder="Name" />
-							</div>
-							<div class="col-6 col-12-xsmall">
-								<input type="email" name="email" id="email" value=""
-									placeholder="Email" />
-							</div>
 							<div class="col-12">
-								<select name="category" id="category">
+								<select name="cat" id="cat">
 									<option value="">- Category -</option>
-									<option value="1">Manufacturing</option>
-									<option value="1">Shipping</option>
-									<option value="1">Administration</option>
-									<option value="1">Human Resources</option>
+									<option value="Free">Free</option>
+									<option value="Guest">Guest</option>
 								</select>
 							</div>
-							<div class="col-4 col-12-medium">
-								<input type="radio" id="priority-low" name="priority" checked>
-								<label for="priority-low">Low Priority</label>
-							</div>
-							<div class="col-4 col-12-medium">
-								<input type="radio" id="priority-normal" name="priority">
-								<label for="priority-normal">Normal Priority</label>
-							</div>
-							<div class="col-4 col-12-medium">
-								<input type="radio" id="priority-high" name="priority">
-								<label for="priority-high">High Priority</label>
-							</div>
-							<div class="col-6 col-12-medium">
-								<input type="checkbox" id="copy" name="copy"> <label
-									for="copy">Email me a copy of this message</label>
-							</div>
-							<div class="col-6 col-12-medium">
-								<input type="checkbox" id="human" name="human" checked>
-								<label for="human">I am a human and not a robot</label>
+							<div class="col-12 col-12-xsmall">
+								<input type="text" name="title" id="title" value="" placeholder="Title" />
 							</div>
 							<div class="col-12">
-								<textarea name="message" id="message"
-									placeholder="Enter your message" rows="6"></textarea>
+								<textarea name="post" id="post" placeholder="Enter your post" rows="6"></textarea>
 							</div>
 							<div class="col-12">
 								<ul class="actions">
-									<li><input type="submit" value="Send Message"
-										class="primary" /></li>
+									<li><input type="submit" value="Register a Post" class="primary" /></li>
 									<li><input type="reset" value="Reset" /></li>
 								</ul>
 							</div>

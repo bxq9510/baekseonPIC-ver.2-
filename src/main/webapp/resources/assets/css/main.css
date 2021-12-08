@@ -2180,7 +2180,7 @@ input, select, textarea {
 	}
 
 	header.major {
-		margin: 0 0 0 0;
+		margin: 0 0 2em 0;
 		position: relative;
 		text-align: center;
 	}
@@ -2817,6 +2817,23 @@ input, select, textarea {
 			table.alt tfoot {
 				border-top: 0;
 			}
+
+	a.tb {
+		border: 0;
+		color: inherit;
+		display: inline-block;
+		height: inherit;
+		line-height: inherit;
+		outline: 0;
+	}
+
+	a.tb:before {
+		margin-right: 0.5em;
+	}
+
+	active>a.tb {
+		color: #e44c65;
+	}
 
 /* Button */
 
