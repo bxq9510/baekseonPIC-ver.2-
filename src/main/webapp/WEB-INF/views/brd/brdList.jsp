@@ -69,7 +69,7 @@ active>a.tb {
 					<div class="row gtr-0 gtr-uniform">
 						<div class="row col-1 off-10">
 							<input type="button" value="New Post"
-								onclick="location.href='inputBrd'" />
+								onclick="location.href='after_inputBrd'" />
 						</div>
 					</div>
 					<div class="row gtr-0 gtr-uniform">
@@ -90,8 +90,8 @@ active>a.tb {
 									<c:forEach items="${brdlist}" var="vo" varStatus="status">
 										<tr>
 											<td>${status.count + pageVO.perPageNum * (pageVO.page -1)}</td>
-											<td><a href=# class="tb">${vo.title}</a></td>
-											<td><a href='#' class="tb">${vo.name}</a></td>
+											<td><a href="brdView?no=${vo.no}&cat=${pagevo.cat}" class="tb">${vo.title}</a></td>
+											<td><a href="#" class="tb">${vo.name}</a></td>
 											<td>${vo.views}</td>
 										</tr>
 									</c:forEach>

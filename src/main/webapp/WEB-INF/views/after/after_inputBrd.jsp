@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -14,64 +13,62 @@
 <body class="is-preload landing">
 	<div id="page-wrapper">
 
-		<!-- Header -->
-		<header id="header">
-			<h1 id="logo">
-				<a href="mainForm">BAEKSEON's PIC.</a>
-			</h1>
-			<nav id="nav">
-				<ul>
-					<li><a href="mainForm">Home</a></li>
-					<li><a href="#">Category</a>
+			<!-- Header -->
+				<header id="header">
+					<h1 id="logo"><a href="after_mainForm" class="icon solid fa-camera"> BAEKSEON's PIC.</a></h1>
+					<nav id="nav">
 						<ul>
-							<li><a href="picList?cat=Music">Music</a></li>
-							<li><a href="picList?cat=Food">Food</a></li>
-							<li><a href="picList?cat=Fashion">Fashion</a></li>
-							<li><a href="picList?cat=Car">Car</a></li>
-							<li><a href="picList?cat=Travel">Travel</a></li>
-						</ul></li>
-					<li><a href="#">Board</a>
-						<ul>
-							<li><a href="brdList?cat=Free">Free</a></li>
-							<li><a href="brdList?cat=Guest">Guest</a></li>
-						</ul></li>
-					<li><a href="logIn" class="button primary">Log In</a></li>
-				</ul>
-			</nav>
-		</header>
+							<li><a href="after_mainForm">Home</a></li>
+							<li>
+								<a href="#">Category</a>
+								<ul>
+									<li><a href="after_picList?cat=Music">Music</a></li>
+									<li><a href="after_picList?cat=Food">Food</a></li>
+									<li><a href="after_picList?cat=Fashion">Fashion</a></li>
+									<li><a href="after_picList?cat=Car">Car</a></li>
+									<li><a href="after_picList?cat=Travel">Travel</a></li>
+								</ul>
+							</li>
+							<li><a href="#">Board</a>
+								<ul>
+									<li><a href="after_brdList?cat=Free">Free</a></li>
+									<li><a href="after_brdList?cat=Guest">Guest</a></li>
+								</ul>
+							</li>
+							<li><a href="#" class="icon solid fa-user-circle">${sessionScope.usrName}(${sessionScope.usrId}) </a></li>
+							<li><a href="logOut" class="button primary">Log Out</a></li>
+						</ul>
+					</nav>
+				</header>
 
-		<!-- Banner -->
+			<!-- Banner -->
 		<div id="main" class="wrapper style1">
 			<div class="container">
-			<div class="container">
-				<h2>${cat}Board</h2>
+				<h2>New Post</h2>
 				<section class="special">
-					<form method="post" action="after_comSave?no=${brd.no}&cat=${brd.cat}">
+					<form method="post" action="brdSave">
+						<input type="hidden" name="id" value=${usrid} />
+						<input type="hidden" name="name" value=${usrname} />
 						<div class="row gtr-uniform gtr-50">
-							<ul class="col-12 alt" style="text-align: left">
-								<li>&emsp;${brd.title}</li>
-								<li>&emsp;${brd.name}</li>
-								<li><textarea rows="6" readonly>&ensp;${brd.post}</textarea></li>
-								<li>&emsp;${brd.day} / views: ${brd.views}</li>
-								<li></li>
-							</ul>
-							<div class="col-12 col-12-xsmall" style="text-align: left">
-								<h4 class="icon solid fa-comments"> Comments as '${brd.title}'</h4>
+							<div class="col-12">
+								<select name="cat" id="cat">
+									<option value="">- Category -</option>
+									<option value="Free">Free</option>
+									<option value="Guest">Guest</option>
+								</select>
 							</div>
-							<div class="col-10">
-							<input type="hidden" name="name" value="${sessionScope.usrName}" />
-							<input type="hidden" name="no" value="${brd.no}" />
-								<input type="text" name="com" id="com" value=""
-									placeholder="What your thoughts?" />
+							<div class="col-12 col-12-xsmall">
+								<input type="text" name="title" id="title" value="" placeholder="Title" />
 							</div>
-							<div class="col-2">
-								<input type="submit" value="comment" />
+							<div class="col-12">
+								<textarea name="post" id="post" placeholder="Enter your post" rows="6"></textarea>
 							</div>
-							<ul class="col-12 alt" style="text-align: left">
-								<c:forEach items="${comlist}" var="vo">
-									<li>${vo.name}(${vo.day.substring(5,19)}) : ${vo.com}</li>
-								</c:forEach>
-							</ul>
+							<div class="col-12">
+								<ul class="actions">
+									<li><input type="submit" value="Register a Post" class="primary" /></li>
+									<li><input type="reset" value="Reset" /></li>
+								</ul>
+							</div>
 						</div>
 					</form>
 				</section>

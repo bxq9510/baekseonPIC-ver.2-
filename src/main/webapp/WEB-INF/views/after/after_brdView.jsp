@@ -17,32 +17,34 @@
 		<!-- Header -->
 		<header id="header">
 			<h1 id="logo">
-				<a href="mainForm">BAEKSEON's PIC.</a>
+				<a href="after_mainForm" class="icon solid fa-camera">
+					BAEKSEON's PIC.</a>
 			</h1>
 			<nav id="nav">
 				<ul>
-					<li><a href="mainForm">Home</a></li>
+					<li><a href="after_mainForm">Home</a></li>
 					<li><a href="#">Category</a>
 						<ul>
-							<li><a href="picList?cat=Music">Music</a></li>
-							<li><a href="picList?cat=Food">Food</a></li>
-							<li><a href="picList?cat=Fashion">Fashion</a></li>
-							<li><a href="picList?cat=Car">Car</a></li>
-							<li><a href="picList?cat=Travel">Travel</a></li>
+							<li><a href="after_picList?cat=Music">Music</a></li>
+							<li><a href="after_picList?cat=Food">Food</a></li>
+							<li><a href="after_picList?cat=Fashion">Fashion</a></li>
+							<li><a href="after_picList?cat=Car">Car</a></li>
+							<li><a href="after_picList?cat=Travel">Travel</a></li>
 						</ul></li>
 					<li><a href="#">Board</a>
 						<ul>
-							<li><a href="brdList?cat=Free">Free</a></li>
-							<li><a href="brdList?cat=Guest">Guest</a></li>
+							<li><a href="after_brdList?cat=Free">Free</a></li>
+							<li><a href="after_brdList?cat=Guest">Guest</a></li>
 						</ul></li>
-					<li><a href="logIn" class="button primary">Log In</a></li>
+					<li><a href="#" class="icon solid fa-user-circle">${sessionScope.usrName}(${sessionScope.usrId})
+					</a></li>
+					<li><a href="logOut" class="button primary">Log Out</a></li>
 				</ul>
 			</nav>
 		</header>
 
 		<!-- Banner -->
 		<div id="main" class="wrapper style1">
-			<div class="container">
 			<div class="container">
 				<h2>${cat}Board</h2>
 				<section class="special">
@@ -69,7 +71,7 @@
 							</div>
 							<ul class="col-12 alt" style="text-align: left">
 								<c:forEach items="${comlist}" var="vo">
-									<li>${vo.name}(${vo.day.substring(5,19)}) : ${vo.com}</li>
+									<li>${vo.name} <sub>(${vo.day.substring(5,19)})</sub> : ${vo.com}</li>
 								</c:forEach>
 							</ul>
 						</div>

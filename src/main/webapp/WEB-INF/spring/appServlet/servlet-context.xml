@@ -27,7 +27,7 @@
 	<!--  인터셉터에 적용할 컨트롤러 설정 -->
 	<interceptors>
 		<interceptor>
-			<mapping path="/input**"/>
+			<mapping path="/after**"/>
 			<exclude-mapping path="/log**"/>
 			<beans:ref bean="AuthLoginInterceptor" />
 		</interceptor>	

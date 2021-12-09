@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.bsy.Service.IF_BrdService;
+import com.bsy.Service.IF_ComService;
 import com.bsy.VO.BrdVO;
 import com.bsy.VO.PageVO;
 
@@ -23,6 +24,8 @@ public class AfterController {
 
 	@Inject
 	private IF_BrdService brdService = null;
+	@Inject
+	private IF_ComService comService = null;
 	
 	@RequestMapping(value = "/after_mainForm", method = RequestMethod.GET)
 	public String after_mainForm(Locale locale, Model model) throws Exception{
@@ -49,22 +52,30 @@ public class AfterController {
 //		redirectAttribute.addFlashAttribute(pagevo);
 //		return "redirect:/after_brdList";
 //	}
-	@RequestMapping(value = "/inputPic", method = RequestMethod.GET)
+	@RequestMapping(value = "/after_inputPic", method = RequestMethod.GET)
 	public String inputPic(Locale locale, Model model) throws Exception{
-		return "input/inputPic";		
+		return "after/after_inputPic";		
 	}
-	@RequestMapping(value = "/inputBrd", method = RequestMethod.GET)
+	@RequestMapping(value = "/after_inputBrd", method = RequestMethod.GET)
 	public String inputBrd(HttpServletRequest request, Model model, Locale locale) throws Exception{
 		HttpSession session = request.getSession();
 		Object id = session.getAttribute("usrId");
 		Object name = session.getAttribute("usrName");
 		model.addAttribute("usrid", id);
 		model.addAttribute("usrname", name);
-		return "input/inputBrd";
+		return "after/after_inputBrd";
 	}
 	@RequestMapping(value = "/brdSave", method = RequestMethod.POST)
 	public String brdSave(BrdVO brdvo, final RedirectAttributes redirectAttribute, Locale locale, Model model) throws Exception{
 		brdService.insert(brdvo);
 		return "redirect:/after_brdList?cat="+brdvo.getCat();
+	}
+	@RequestMapping(value = "/after_brdView", method = RequestMethod.GET)
+	public String after_brdView(@RequestParam("no") int no, @RequestParam("cat") String cat, Locale locale, Model model) throws Exception{
+		brdService.updateView(no);
+		model.addAttribute("brd", brdService.selectOne(no));
+		model.addAttribute("cat", cat);
+		model.addAttribute("comlist", comService.selectAll(no));
+		return "after/after_brdView";		
 	}
 }

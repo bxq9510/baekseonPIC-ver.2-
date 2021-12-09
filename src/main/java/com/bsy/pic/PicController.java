@@ -12,12 +12,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bsy.Service.IF_BrdService;
+import com.bsy.Service.IF_ComService;
 import com.bsy.VO.PageVO;
 
 @Controller
 public class PicController {
 	@Inject
 	private IF_BrdService brdService = null;
+	@Inject
+	private IF_ComService comService = null;
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String mainForm(Locale locale, Model model) throws Exception{
 		return "/mainForm";		
@@ -48,6 +52,7 @@ public class PicController {
 		brdService.updateView(no);
 		model.addAttribute("brd", brdService.selectOne(no));
 		model.addAttribute("cat", cat);
-		return "brd/brdView";		
+		model.addAttribute("comlist", comService.selectAll(no));
+		return "brd/brdView";	
 	}
 }

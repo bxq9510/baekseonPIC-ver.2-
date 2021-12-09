@@ -3,14 +3,8 @@ package com.bsy.VO;
 public class ComVO {
 	private String name;
 	private String com;
-	private String cat;
 	private int no;
-	public String getCat() {
-		return cat;
-	}
-	public void setCat(String cat) {
-		this.cat = cat;
-	}
+	private String day;
 	public int getNo() {
 		return no;
 	}
@@ -19,6 +13,12 @@ public class ComVO {
 	}
 	public String getName() {
 		return name;
+	}
+	public String getDay() {
+		return day;
+	}
+	public void setDay(String day) {
+		this.day = day;
 	}
 	public void setName(String name) {
 		this.name = name;
