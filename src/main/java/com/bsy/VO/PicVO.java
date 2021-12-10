@@ -4,11 +4,18 @@ public class PicVO {
 	private int no;
 	private String title;
 	private String name;
-	private String memo;
+	private String post;
 	private String cat;
 	private int views=0;
 	private String day;
+	private String[] files;
 	
+	public String[] getFiles() {
+		return files;
+	}
+	public void setFiles(String[] files) {
+		this.files = files;
+	}
 	public String getCat() {
 		return cat;
 	}
@@ -45,10 +52,10 @@ public class PicVO {
 	public void setNo(int no) {
 		this.no = no;
 	}
-	public String getMemo() {
-		return memo;
+	public String getPost() {
+		return post;
 	}
-	public void setMemo(String memo) {
-		this.memo = memo;
+	public void setPost(String post) {
+		this.post = post;
 	}
 }

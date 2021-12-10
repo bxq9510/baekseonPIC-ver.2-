@@ -51,7 +51,7 @@
 					<div class="box alt">
 						<div class="row gtr-50 gtr-uniform">
 							<div class="col-1 off-10">
-								<input type="button" value="New PIC" onclick="location.href='inputPic'" />
+								<input type="button" value="New PIC" onclick="location.href='after_inputPic'" />
 							</div>
 							<div class="col-4 col-6-xsmall">
 								<a href="#" class="image fit"><img

@@ -47,8 +47,8 @@
 				<h2>New Post</h2>
 				<section class="special">
 					<form method="post" action="brdSave">
-						<input type="hidden" name="id" value=${usrid} />
-						<input type="hidden" name="name" value=${usrname} />
+						<input type="hidden" name="id" value=${sessionScope.usrId} />
+						<input type="hidden" name="name" value=${sessionScope.usrName} />
 						<div class="row gtr-uniform gtr-50">
 							<div class="col-12">
 								<select name="cat" id="cat">

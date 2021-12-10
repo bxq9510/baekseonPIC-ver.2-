@@ -46,38 +46,36 @@
 		<!-- Banner -->
 		<div id="main" class="wrapper style1">
 			<div class="container">
-				<header class="major">
-					<h2>Music</h2>
-				</header>
-				<section>
-					<div class="box alt">
-						<div class="row gtr-50 gtr-uniform">
-							<div class="col-1 off-10">
-								<input type="button" value="New PIC"
-									onclick="location.href='after_inputPic'" />
+				<h2>${cat}Board</h2>
+				<section class="special">
+					<form method="post" action="after_comSave?no=${brd.no}&cat=${brd.cat}">
+						<div class="row gtr-uniform gtr-50">
+							<ul class="col-12 alt" style="text-align: left">
+								<li>&emsp;${brd.title}</li>
+								<li>&emsp;${brd.name}</li>
+								<li><textarea rows="6" readonly>&ensp;${brd.post}</textarea></li>
+								<li>&emsp;${brd.day} / views: ${brd.views}</li>
+								<li></li>
+							</ul>
+							<div class="col-12 col-12-xsmall" style="text-align: left">
+								<h4 class="icon solid fa-comments"> Comments as '${brd.title}'</h4>
 							</div>
-							<c:forEach items="${piclist}" var="vo">
-								<div class="col-4 col-6-xsmall">
-									<a href="after_picView?cat=${vo.cat}&no=${vo.pic_no}" class="image fit"><img src="${pageContext.request.contextPath }/download?filename=${vo.filename}" /></a>
-								</div>
-							</c:forEach>
-							<table style="margin-top: 2em">
-								<tfoot>
-									<tr>
-										<td><c:if test="${pageVO.prev}">
-												<a href="brdList?page=${pageVO.startPage-1}&cat=${pageVO.cat}" class="tb">[이전]</a>
-											</c:if> <c:forEach begin="${pageVO.startPage}"
-												end="${pageVO.endPage}" var="idx">
-												<a href="brdList?page=${idx}&cat=${pageVO.cat}" class="tb">${idx}</a>
-											</c:forEach> <c:if test="${pageVO.next}">
-												<a href="brdList?page=${pageVO.endPage+1}&cat=${pageVO.cat}"
-													class="tb">[Next]</a>
-											</c:if></td>
-									</tr>
-								</tfoot>
-							</table>
+							<div class="col-10">
+							<input type="hidden" name="name" value="${sessionScope.usrName}" />
+							<input type="hidden" name="no" value="${brd.no}" />
+								<input type="text" name="com" id="com" value=""
+									placeholder="What your thoughts?" />
+							</div>
+							<div class="col-2">
+								<input type="submit" value="comment" />
+							</div>
+							<ul class="col-12 alt" style="text-align: left">
+								<c:forEach items="${comlist}" var="vo">
+									<li>${vo.name} <sub>(${vo.day.substring(5,19)})</sub> : ${vo.com}</li>
+								</c:forEach>
+							</ul>
 						</div>
-					</div>
+					</form>
 				</section>
 			</div>
 		</div>

@@ -21,6 +21,17 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	<!-- 첨부파일 관련 -->
+	<beans:bean id="multipartResolver"
+	class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxUploadSize" value="10485760"></beans:property>
+	</beans:bean>
+	<!--  첨부파일이 서버에 올라오면 임시 저장소에 저장됩니다.. 이를 내가 원하는 곳으로 다시 이동해야 한다.
+	       내가 원하는 곳에 대한 정보를 설정.. 여기서  이동하는 곳이 아니리 이동할 곳의 정보설정(위치정보)입니다.. 구분하세요. -->
+	<beans:bean id="uploadPath" class="java.lang.String">
+		<beans:constructor-arg value="/tmp"></beans:constructor-arg>
+	</beans:bean>
+	
 	<!--  인터셉터 설정 -->
 	<beans:bean id="AuthLoginInterceptor" class="com.bsy.Interceptor.AuthLoginInterceptor">
 	</beans:bean>
@@ -33,6 +44,7 @@
 		</interceptor>	
 	</interceptors>	
 	
+	<context:component-scan base-package="com.bsy.util" />
 	<context:component-scan base-package="com.bsy.pic" />
 	
 	

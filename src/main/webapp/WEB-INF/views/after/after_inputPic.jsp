@@ -13,85 +13,71 @@
 <body class="is-preload landing">
 	<div id="page-wrapper">
 
-			<!-- Header -->
-				<header id="header">
-					<h1 id="logo"><a href="after_mainForm" class="icon solid fa-camera"> BAEKSEON's PIC.</a></h1>
-					<nav id="nav">
+		<!-- Header -->
+		<header id="header">
+			<h1 id="logo">
+				<a href="after_mainForm" class="icon solid fa-camera">
+					BAEKSEON's PIC.</a>
+			</h1>
+			<nav id="nav">
+				<ul>
+					<li><a href="after_mainForm">Home</a></li>
+					<li><a href="#">Category</a>
 						<ul>
-							<li><a href="after_mainForm">Home</a></li>
-							<li>
-								<a href="#">Category</a>
-								<ul>
-									<li><a href="after_picList?cat=Music">Music</a></li>
-									<li><a href="after_picList?cat=Food">Food</a></li>
-									<li><a href="after_picList?cat=Fashion">Fashion</a></li>
-									<li><a href="after_picList?cat=Car">Car</a></li>
-									<li><a href="after_picList?cat=Travel">Travel</a></li>
-								</ul>
-							</li>
-							<li><a href="#">Board</a>
-								<ul>
-									<li><a href="after_brdList?cat=Free">Free</a></li>
-									<li><a href="after_brdList?cat=Guest">Guest</a></li>
-								</ul>
-							</li>
-							<li><a href="#" class="icon solid fa-user-circle">${sessionScope.usrName}(${sessionScope.usrId}) </a></li>
-							<li><a href="logOut" class="button primary">Log Out</a></li>
-						</ul>
-					</nav>
-				</header>
+							<li><a href="after_picList?cat=Music">Music</a></li>
+							<li><a href="after_picList?cat=Food">Food</a></li>
+							<li><a href="after_picList?cat=Fashion">Fashion</a></li>
+							<li><a href="after_picList?cat=Car">Car</a></li>
+							<li><a href="after_picList?cat=Travel">Travel</a></li>
+						</ul></li>
+					<li><a href="#">Board</a>
+						<ul>
+							<li><a href="after_brdList?cat=Free">Free</a></li>
+							<li><a href="after_brdList?cat=Guest">Guest</a></li>
+						</ul></li>
+					<li><a href="#" class="icon solid fa-user-circle">${sessionScope.usrName}(${sessionScope.usrId})
+					</a></li>
+					<li><a href="logOut" class="button primary">Log Out</a></li>
+				</ul>
+			</nav>
+		</header>
 
-			<!-- Banner -->
+		<!-- Banner -->
 		<div id="main" class="wrapper style1">
 			<div class="container">
-				<h2>New PIC</h2>
+				<h2>New Pic</h2>
 				<section class="special">
-					<form method="post" action="#">
+					<form method="post" action="picSave" encType="multipart/form-data">
+						<input type="hidden" name="id" value=${sessionScope.usrId} /> <input
+							type="hidden" name="name" value=${sessionScope.usrName} />
 						<div class="row gtr-uniform gtr-50">
-							<div class="col-6 col-12-xsmall">
-								<input type="text" name="name" id="name" value=""
-									placeholder="Name" />
-							</div>
-							<div class="col-6 col-12-xsmall">
-								<input type="email" name="email" id="email" value=""
-									placeholder="Email" />
-							</div>
 							<div class="col-12">
-								<select name="category" id="category">
+								<select name="cat" id="cat">
 									<option value="">- Category -</option>
-									<option value="1">Manufacturing</option>
-									<option value="1">Shipping</option>
-									<option value="1">Administration</option>
-									<option value="1">Human Resources</option>
+									<option value="Music">Music</option>
+									<option value="Food">Food</option>
+									<option value="Guest">Fashion</option>
+									<option value="Car">Car</option>
+									<option value="Travel">Travel</option>
 								</select>
 							</div>
-							<div class="col-4 col-12-medium">
-								<input type="radio" id="priority-low" name="priority" checked>
-								<label for="priority-low">Low Priority</label>
+							<div class="col-12 col-12-xsmall">
+								<input type="text" name="title" id="title" value=""
+									placeholder="Title" />
 							</div>
-							<div class="col-4 col-12-medium">
-								<input type="radio" id="priority-normal" name="priority">
-								<label for="priority-normal">Normal Priority</label>
+							<div class="col-2" style="text-align: left">
+								<label for="bizFile" class="button" >Upload</label><input type="file" name="file" accept="image/*" id="bizFile" style="display: none" />
 							</div>
-							<div class="col-4 col-12-medium">
-								<input type="radio" id="priority-high" name="priority">
-								<label for="priority-high">High Priority</label>
-							</div>
-							<div class="col-6 col-12-medium">
-								<input type="checkbox" id="copy" name="copy"> <label
-									for="copy">Email me a copy of this message</label>
-							</div>
-							<div class="col-6 col-12-medium">
-								<input type="checkbox" id="human" name="human" checked>
-								<label for="human">I am a human and not a robot</label>
+							<div class="col-10" style="text-align: left">
+								<span id="fileName" class="button disabled">Attachments...</span>
 							</div>
 							<div class="col-12">
-								<textarea name="message" id="message"
-									placeholder="Enter your message" rows="6"></textarea>
+								<textarea name="post" id="post" placeholder="Enter your post"
+									rows="6"></textarea>
 							</div>
 							<div class="col-12">
 								<ul class="actions">
-									<li><input type="submit" value="Send Message"
+									<li><input type="submit" value="Register a Post"
 										class="primary" /></li>
 									<li><input type="reset" value="Reset" /></li>
 								</ul>
@@ -123,8 +109,8 @@
 		</footer>
 
 	</div>
-
 	<!-- Scripts -->
+	<script src="resources/assets/js/file.js"></script>
 	<script src="resources/assets/js/jquery.min.js"></script>
 	<script src="resources/assets/js/jquery.scrolly.min.js"></script>
 	<script src="resources/assets/js/jquery.dropotron.min.js"></script>

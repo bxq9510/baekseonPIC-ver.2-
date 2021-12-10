@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.bsy.DAO.IF_PicDAO">
+	<insert id="insert">
+		insert into pic
+		values (#{no}, #{title}, #{name}, #{post}, #{cat}, 0, default)
+	</insert>
+	<insert id="insertattach">
+		insert into pic_attach
+		values (pic_attach_seq.nextval, #{pic_no}, #{filename}, #{cat})
+	</insert>
+	<select id="selectone" resultType="com.bsy.VO.PicVO">
+		select * from pic where no = #{no}
+	</select>
+	<select id="piccnt" resultType="int">
+		select count(*) from pic
+	</select>
+	<select id="attachcnt" resultType="int">
+		select count(*) from pic_attach
+	</select>
+	<select id="selectall" resultType="com.bsy.VO.PicVO">
+		select * from
+		(select rownum as num, b.* from	(select * from pic where cat=#{cat} order by day desc) b)
+		where num between #{startNo}+1 and #{startNo} + #{perPageNum}
+	</select>
+	<select id="getseq" resultType="int">
+		select pic_seq.nextval from dual
+	</select>
+	<select id="selectattach" resultType="String">
+		select filename from pic_attach where pic_no = #{no}		
+	</select>
+	<select id="selectallattach" resultType="com.bsy.VO.AttachVO">
+		select * from pic_attach where cat=#{cat} order by no		
+	</select>
+	<update id="updateView">
+		update pic set views=views+1 where no = #{no}
+	</update>
+</mapper>
