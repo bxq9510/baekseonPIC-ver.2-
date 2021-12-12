@@ -92,7 +92,7 @@ active>a.tb {
 									<c:forEach items="${brdlist}" var="vo" varStatus="status">
 										<tr>
 											<td>${status.count + pageVO.perPageNum * (pageVO.page -1)}</td>
-											<td><a href="after_brdView?no=${vo.no}&cat=${pagevo.cat}" class="tb">${vo.title}</a></td>
+											<td><a href="after_brdView?no=${vo.no}" class="tb">${vo.title}</a></td>
 											<td><a href='#' class="tb">${vo.name}</a></td>
 											<td>${vo.views}</td>
 										</tr>

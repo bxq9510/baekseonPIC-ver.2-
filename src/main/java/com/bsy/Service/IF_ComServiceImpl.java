@@ -22,4 +22,12 @@ public class IF_ComServiceImpl implements IF_ComService {
 	public List<ComVO> selectAll(int no) throws Exception {
 		return comdao.selectAll(no);
 	}
+	@Override
+	public void insertPic(ComVO comvo) throws Exception {
+		comdao.insertPic(comvo);
+	}
+	@Override
+	public List<ComVO> selectAllPic(int no) throws Exception {
+		return comdao.selectAllPic(no);
+	}
 }

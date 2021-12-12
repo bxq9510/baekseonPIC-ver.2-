@@ -65,12 +65,12 @@ public class AfterController {
 		return "redirect:/after_picList?cat="+picvo.getCat();
 	}
 	@RequestMapping(value = "/after_picView", method = RequestMethod.GET)
-	public String after_picView(@RequestParam("no") int no, @RequestParam("cat") String cat, Locale locale, Model model) throws Exception{
+	public String after_picView(@RequestParam("no") int no, Locale locale, Model model) throws Exception{
 		picService.updateView(no);
 		model.addAttribute("pic", picService.selectOne(no));
-		model.addAttribute("cat", cat);
-//		model.addAttribute("comlist", comService.selectAll(no));
-		return "after/after_brdView";		
+		model.addAttribute("piclist", picService.selectAttach(no));
+		model.addAttribute("comlist", comService.selectAllPic(no));
+		return "after/after_picView";		
 	}
 	@RequestMapping(value = "/after_brdList", method = RequestMethod.GET)
 	public String brdList(@ModelAttribute PageVO pagevo, Locale locale, Model model) throws Exception{
@@ -93,10 +93,9 @@ public class AfterController {
 		return "redirect:/after_brdList?cat="+brdvo.getCat();
 	}
 	@RequestMapping(value = "/after_brdView", method = RequestMethod.GET)
-	public String after_brdView(@RequestParam("no") int no, @RequestParam("cat") String cat, Locale locale, Model model) throws Exception{
+	public String after_brdView(@RequestParam("no") int no, Locale locale, Model model) throws Exception{
 		brdService.updateView(no);
 		model.addAttribute("brd", brdService.selectOne(no));
-		model.addAttribute("cat", cat);
 		model.addAttribute("comlist", comService.selectAll(no));
 		return "after/after_brdView";		
 	}

@@ -46,24 +46,29 @@
 		<!-- Banner -->
 		<div id="main" class="wrapper style1">
 			<div class="container">
-				<h2>${cat}Board</h2>
+				<h2><a href="after_picList?cat=${pic.cat}">${pic.cat} Board</a></h2>
 				<section class="special">
-					<form method="post" action="after_comSave?no=${brd.no}&cat=${brd.cat}">
+					<form method="post" action="after_comPic?no=${pic.no}">
 						<div class="row gtr-uniform gtr-50">
 							<ul class="col-12 alt" style="text-align: left">
-								<li>&emsp;${brd.title}</li>
-								<li>&emsp;${brd.name}</li>
-								<li><textarea rows="6" readonly>&ensp;${brd.post}</textarea></li>
-								<li>&emsp;${brd.day} / views: ${brd.views}</li>
+								<li>&emsp;${pic.title}</li>
+								<li>&emsp;${pic.name}</li>
+								<c:forEach var="fname" items="${piclist }">
+									<li>&emsp;<a href="${pageContext.request.contextPath }/download?filename=${fname}" class="icon solid fa-download"> ${fname}[다운로드]</a></li>
+									<li><img src="${pageContext.request.contextPath }/download?filename=${fname}" style="width:100%"></li>
+								</c:forEach>
+								<li><textarea rows="1" readonly>&ensp;${pic.post}</textarea></li>
+								<li>&emsp;${pic.day} / views: ${pic.views}</li>
 								<li></li>
 							</ul>
 							<div class="col-12 col-12-xsmall" style="text-align: left">
-								<h4 class="icon solid fa-comments"> Comments as '${brd.title}'</h4>
+								<h4 class="icon solid fa-comments">Comments as
+									'${pic.title}'</h4>
 							</div>
 							<div class="col-10">
-							<input type="hidden" name="name" value="${sessionScope.usrName}" />
-							<input type="hidden" name="no" value="${brd.no}" />
-								<input type="text" name="com" id="com" value=""
+								<input type="hidden" name="name" value="${sessionScope.usrName}" />
+								<input type="hidden" name="no" value="${pic.no}" /> <input
+									type="text" name="com" id="com" value=""
 									placeholder="What your thoughts?" />
 							</div>
 							<div class="col-2">
@@ -71,7 +76,9 @@
 							</div>
 							<ul class="col-12 alt" style="text-align: left">
 								<c:forEach items="${comlist}" var="vo">
-									<li>${vo.name} <sub>(${vo.day.substring(5,19)})</sub> : ${vo.com}</li>
+									<li>${vo.name}<sub>(${vo.day.substring(5,19)})</sub> :
+										${vo.com}
+									</li>
 								</c:forEach>
 							</ul>
 						</div>

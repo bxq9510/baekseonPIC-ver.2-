@@ -61,4 +61,9 @@ public class IF_PicServiceImpl implements IF_PicService {
 		return picdao.attachcnt();
 	}
 
+	@Override
+	public List<String> selectAttach(int no) throws Exception {
+		return picdao.selectAttach(no);
+	}
+
 }

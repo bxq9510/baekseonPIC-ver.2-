@@ -46,9 +46,9 @@
 		<!-- Banner -->
 		<div id="main" class="wrapper style1">
 			<div class="container">
-				<h2>${cat}Board</h2>
+				<h2><a href="after_brdList?cat=${brd.cat}">${brd.cat} Board</a></h2>
 				<section class="special">
-					<form method="post" action="after_comSave?no=${brd.no}&cat=${brd.cat}">
+					<form method="post" action="after_comSave?no=${brd.no}">
 						<div class="row gtr-uniform gtr-50">
 							<ul class="col-12 alt" style="text-align: left">
 								<li>&emsp;${brd.title}</li>

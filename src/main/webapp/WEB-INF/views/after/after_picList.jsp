@@ -47,7 +47,7 @@
 		<div id="main" class="wrapper style1">
 			<div class="container">
 				<header class="major">
-					<h2>Music</h2>
+					<h2>${pagevo.cat}</h2>
 				</header>
 				<section>
 					<div class="box alt">
@@ -58,7 +58,7 @@
 							</div>
 							<c:forEach items="${piclist}" var="vo">
 								<div class="col-4 col-6-xsmall">
-									<a href="after_picView?cat=${vo.cat}&no=${vo.pic_no}" class="image fit"><img src="${pageContext.request.contextPath }/download?filename=${vo.filename}" /></a>
+									<a href="after_picView?no=${vo.pic_no}" class="image fit"><img src="${pageContext.request.contextPath }/download?filename=${vo.filename}" /></a>
 								</div>
 							</c:forEach>
 							<table style="margin-top: 2em">

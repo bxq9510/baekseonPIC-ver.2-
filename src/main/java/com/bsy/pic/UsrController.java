@@ -19,7 +19,12 @@ public class UsrController {
 	private IF_UsrService usrService = null;
 	
 	@RequestMapping(value = "/signUp", method = RequestMethod.GET)
-	public String signUp(Locale locale, Model model) throws Exception{		
+	public String signUp(Locale locale, Model model) throws Exception{
+		return "login/signUp";		
+	}
+	@RequestMapping(value = "/signUp_main", method = RequestMethod.POST)
+	public String signUp_main(UsrVO usrvo, Locale locale, Model model) throws Exception{	
+		model.addAttribute("usrvo", usrvo);
 		return "login/signUp";		
 	}
 	@RequestMapping(value = "/addUsr", method = RequestMethod.POST)

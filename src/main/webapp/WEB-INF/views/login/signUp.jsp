@@ -64,7 +64,7 @@
 								<input type="password" value=""	placeholder="VERIFY PASSWORD" />
 							</div>
 							<div class="col-4 off-4 col-12-xsmall">
-								<input type="text" name="name" id="name" value=""
+								<input type="text" name="name" id="name" value="${usrvo.name }"
 									placeholder="CHOOSE YOUR USERNAME" />
 							</div>
 							<div class="col-4 off-4">

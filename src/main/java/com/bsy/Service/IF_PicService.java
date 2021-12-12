@@ -13,5 +13,6 @@ public interface IF_PicService {
 	public PicVO selectOne(int no) throws Exception;
 	public void updateView(int no) throws Exception;
 	public List<AttachVO> selectAllAttach(String cat) throws Exception;
+	public List<String> selectAttach(int no) throws Exception;
 	public int attachcnt() throws Exception;
 }

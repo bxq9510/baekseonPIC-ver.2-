@@ -33,7 +33,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select filename from pic_attach where pic_no = #{no}		
 	</select>
 	<select id="selectallattach" resultType="com.bsy.VO.AttachVO">
-		select * from pic_attach where cat=#{cat} order by no		
+		select * from pic_attach where cat=#{cat} order by no desc		
 	</select>
 	<update id="updateView">
 		update pic set views=views+1 where no = #{no}

@@ -8,7 +8,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into bcom
 		values (#{name}, #{com}, #{no}, default)
 	</insert>
+	<insert id="insertpic">
+		insert into pcom
+		values (#{name}, #{com}, #{no}, default)
+	</insert>
 	<select id="selectall" resultType="com.bsy.VO.ComVO">
 		select * from bcom where no=#{no}
+	</select>
+	<select id="selectallpic" resultType="com.bsy.VO.ComVO">
+		select * from pcom where no=#{no}
 	</select>
 </mapper>
