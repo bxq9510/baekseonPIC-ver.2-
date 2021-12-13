@@ -31,10 +31,6 @@ public class LoginController {
 		session.invalidate(); // 모든 세션값을 지운다.		
 		return "redirect:/";		
 	}
-//	@RequestMapping(value = "/afterLogin", method = RequestMethod.GET)
-//	public String afterLogin(Locale locale, Model model) throws Exception{
-//		return "/after_mainForm";		
-//	}
 	@RequestMapping(value = "/loginProcess", method = RequestMethod.POST)
 	public String loginProcess(UsrVO usrvo, HttpServletRequest request, HttpServletResponse response, Locale locale, Model model) throws Exception{
 		String tagetUrl = "";
@@ -55,7 +51,7 @@ public class LoginController {
 				session.setAttribute("usrName", tempUsrvo.getName());
 				session.setAttribute("usrId", tempUsrvo.getId());
 				session.setAttribute("usrDay", tempUsrvo.getDay());
-				tagetUrl= "/after_mainForm";
+				tagetUrl= "/mainForm";
 			}else {
 				response.setContentType("text/html; charset=UTF-8");
 				PrintWriter out = response.getWriter();

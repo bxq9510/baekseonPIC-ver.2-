@@ -20,11 +20,11 @@ public class ComController {
 	@RequestMapping(value = "/after_comSave", method = RequestMethod.POST)
 	public String after_comSave(ComVO comvo, @RequestParam("no") int no, Locale locale, Model model) throws Exception{
 		comService.insert(comvo);
-		return "redirect:/after_brdView?no="+no;
+		return "redirect:/brdView?no="+no;
 	}
 	@RequestMapping(value = "/after_comPic", method = RequestMethod.POST)
 	public String after_comPic(ComVO comvo, @RequestParam("no") int no, Locale locale, Model model) throws Exception{
 		comService.insertPic(comvo);
-		return "redirect:/after_picView?no="+no;
+		return "redirect:/picView?no="+no;
 	}
 }

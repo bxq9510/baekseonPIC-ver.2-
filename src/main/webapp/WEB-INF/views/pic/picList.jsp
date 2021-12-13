@@ -14,81 +14,87 @@
 <body class="is-preload landing">
 	<div id="page-wrapper">
 
-			<!-- Header -->
-				<header id="header">
-					<h1 id="logo"><a href="mainForm">BAEKSEON's PIC.</a></h1>
-					<nav id="nav">
+		<!-- Header -->
+		<header id="header">
+			<h1 id="logo">
+				<a href="mainForm">BAEKSEON's PIC.</a>
+			</h1>
+			<nav id="nav">
+				<ul>
+					<li><a href="mainForm">Home</a></li>
+					<li><a href="#">Category</a>
 						<ul>
-							<li><a href="mainForm">Home</a></li>
-							<li>
-								<a href="#">Category</a>
-								<ul>
-									<li><a href="picList?cat=Music">Music</a></li>
-									<li><a href="picList?cat=Food">Food</a></li>
-									<li><a href="picList?cat=Fashion">Fashion</a></li>
-									<li><a href="picList?cat=Car">Car</a></li>
-									<li><a href="picList?cat=Travel">Travel</a></li>
-								</ul>
-							</li>
-							<li><a href="#">Board</a>
-								<ul>
-									<li><a href="brdList?cat=Free">Free</a></li>
-									<li><a href="brdList?cat=Guest">Guest</a></li>
-								</ul>
-							</li>
-							<li><a href="logIn" class="button primary">Log In</a></li>
+							<li><a href="picList?cat=Music">Music</a></li>
+							<li><a href="picList?cat=Food">Food</a></li>
+							<li><a href="picList?cat=Fashion">Fashion</a></li>
+							<li><a href="picList?cat=Car">Car</a></li>
+							<li><a href="picList?cat=Travel">Travel</a></li>
+						</ul></li>
+					<li><a href="#">Board</a>
+						<ul>
+							<li><a href="brdList?cat=Free">Free</a></li>
+							<li><a href="brdList?cat=Guest">Guest</a></li>
 						</ul>
-					</nav>
-				</header>
+					</li>
+					<c:catch>
+						<c:choose>
+							<c:when test="${empty sessionScope.usrId}">
+								<li><a href="logIn" class="button primary">Log In</a></li>
+							</c:when>
+							<c:otherwise>
+								<c:choose>
+									<c:when test="${sessionScope.usrId eq 'admin' }">
+										<li><a href="#" class="icon solid fa-user-circle">${sessionScope.usrName}(${sessionScope.usrId})</a></li>
+										<li><a href="logOut" class="button primary">Log Out</a></li>
+									</c:when>
+									<c:otherwise>
+										<li><a href="#" class="icon solid fa-user-circle">${sessionScope.usrName}(${sessionScope.usrId})</a></li>
+										<li><a href="logOut" class="button primary">Log Out</a></li>
+									</c:otherwise>
+								</c:choose>
+							</c:otherwise>
+						</c:choose>
+					</c:catch>
+				</ul>
+			</nav>
+		</header>
 
-			<!-- Banner -->
+		<!-- Banner -->
 		<div id="main" class="wrapper style1">
 			<div class="container">
 				<header class="major">
-					<h2>Music</h2>
+					<h2>${pagevo.cat}</h2>
 				</header>
 				<section>
 					<div class="box alt">
 						<div class="row gtr-50 gtr-uniform">
 							<div class="col-1 off-10">
-								<input type="button" value="New PIC" onclick="location.href='after_inputPic'" />
+								<input type="button" value="New PIC"
+									onclick="location.href='after_inputPic'" />
 							</div>
-							<div class="col-4 col-6-xsmall">
-								<a href="#" class="image fit"><img
-									src="resources/images/main1.jpg" alt="" /></a>
-							</div>
-							<div class="col-4 col-6-xsmall">
-								<a href="#" class="image fit"><img
-									src="resources/images/main2.jpg" alt="" /></a>
-							</div>
-							<div class="col-4 col-6-xsmall">
-								<a href="#" class="image fit"><img
-									src="resources/images/main3.jpg" alt="" /></a>
-							</div>
-							<div class="col-4 col-6-xsmall">
-								<a href="#" class="image fit"><img
-									src="resources/images/main4.jpg" alt="" /></a>
-							</div>
-							<div class="col-4 col-6-xsmall">
-								<a href="#" class="image fit"><img
-									src="resources/images/main5.jpg" alt="" /></a>
-							</div>
-							<div class="col-4 col-6-xsmall">
-								<a href="#" class="image fit"><img
-									src="resources/images/main6.jpg" alt="" /></a>
-							</div>
-							<div class="col-4 col-6-xsmall">
-								<a href="#" class="image fit"><img
-									src="resources/images/main7.jpg" alt="" /></a>
-							</div>
-							<div class="col-4 col-6-xsmall">
-								<a href="#" class="image fit"><img
-									src="resources/images/main8.jpg" alt="" /></a>
-							</div>
-							<div class="col-4 col-6-xsmall">
-								<a href="#" class="image fit"><img
-									src="resources/images/main9.jpg" alt="" /></a>
-							</div>
+							<c:forEach items="${piclist}" var="vo">
+								<div class="col-4 col-6-xsmall">
+									<a href="picView?no=${vo.pic_no}" class="image fit"><img
+										src="${pageContext.request.contextPath }/download?filename=${vo.filename}" /></a>
+								</div>
+							</c:forEach>
+							<table style="margin-top: 2em">
+								<tfoot>
+									<tr>
+										<td><c:if test="${pageVO.prev}">
+												<a
+													href="brdList?page=${pageVO.startPage-1}&cat=${pageVO.cat}"
+													class="tb">[이전]</a>
+											</c:if> <c:forEach begin="${pageVO.startPage}"
+												end="${pageVO.endPage}" var="idx">
+												<a href="brdList?page=${idx}&cat=${pageVO.cat}" class="tb">${idx}</a>
+											</c:forEach> <c:if test="${pageVO.next}">
+												<a href="brdList?page=${pageVO.endPage+1}&cat=${pageVO.cat}"
+													class="tb">[Next]</a>
+											</c:if></td>
+									</tr>
+								</tfoot>
+							</table>
 						</div>
 					</div>
 				</section>

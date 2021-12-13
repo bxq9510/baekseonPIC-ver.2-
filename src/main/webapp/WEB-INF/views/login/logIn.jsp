@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -13,34 +14,51 @@
 <body class="is-preload landing">
 	<div id="page-wrapper">
 
-			<!-- Header -->
-				<header id="header">
-					<h1 id="logo"><a href="mainForm">BAEKSEON's PIC.</a></h1>
-					<nav id="nav">
+		<!-- Header -->
+		<header id="header">
+			<h1 id="logo">
+				<a href="mainForm">BAEKSEON's PIC.</a>
+			</h1>
+			<nav id="nav">
+				<ul>
+					<li><a href="mainForm">Home</a></li>
+					<li><a href="#">Category</a>
 						<ul>
-							<li><a href="mainForm">Home</a></li>
-							<li>
-								<a href="#">Category</a>
-								<ul>
-									<li><a href="picList?cat=Music">Music</a></li>
-									<li><a href="picList?cat=Food">Food</a></li>
-									<li><a href="picList?cat=Fashion">Fashion</a></li>
-									<li><a href="picList?cat=Car">Car</a></li>
-									<li><a href="picList?cat=Travel">Travel</a></li>
-								</ul>
-							</li>
-							<li><a href="#">Board</a>
-								<ul>
-									<li><a href="brdList?cat=Free">Free</a></li>
-									<li><a href="brdList?cat=Guest">Guest</a></li>
-								</ul>
-							</li>
-							<li><a href="logIn" class="button primary">Log In</a></li>
-						</ul>
-					</nav>
-				</header>
+							<li><a href="picList?cat=Music">Music</a></li>
+							<li><a href="picList?cat=Food">Food</a></li>
+							<li><a href="picList?cat=Fashion">Fashion</a></li>
+							<li><a href="picList?cat=Car">Car</a></li>
+							<li><a href="picList?cat=Travel">Travel</a></li>
+						</ul></li>
+					<li><a href="#">Board</a>
+						<ul>
+							<li><a href="brdList?cat=Free">Free</a></li>
+							<li><a href="brdList?cat=Guest">Guest</a></li>
+						</ul></li>
+					<c:catch>
+						<c:choose>
+							<c:when test="${empty sessionScope.usrId}">
+								<li><a href="logIn" class="button primary">Log In</a></li>
+							</c:when>
+							<c:otherwise>
+								<c:choose>
+									<c:when test="${sessionScope.usrId eq 'admin' }">
+										<li><a href="#" class="icon solid fa-user-circle">${sessionScope.usrName}(${sessionScope.usrId})</a></li>
+										<li><a href="logOut" class="button primary">Log Out</a></li>
+									</c:when>
+									<c:otherwise>
+										<li><a href="#" class="icon solid fa-user-circle">${sessionScope.usrName}(${sessionScope.usrId})</a></li>
+										<li><a href="logOut" class="button primary">Log Out</a></li>
+									</c:otherwise>
+								</c:choose>
+							</c:otherwise>
+						</c:choose>
+					</c:catch>
+				</ul>
+			</nav>
+		</header>
 
-			<!-- Banner -->
+		<!-- Banner -->
 		<div id="main" class="wrapper style1">
 			<div class="container">
 				<header class="major">
@@ -50,8 +68,7 @@
 					<form action="loginProcess" method="post">
 						<div class="row gtr-uniform gtr-50">
 							<div class="col-4 off-4 col-12-xsmall">
-								<input type="text" name="id" id="id" value=""
-									placeholder="ID" />
+								<input type="text" name="id" id="id" value="" placeholder="ID" />
 							</div>
 							<div class="col-4 off-4 col-12-xsmall">
 								<input type="password" name="pw" id="pw" value=""
@@ -59,9 +76,9 @@
 							</div>
 							<div class="col-4 off-4">
 								<ul class="actions">
-									<li><input type="submit" value="LogIn"
-										class="primary" /></li>
-									<li><input type="button" value="SignUp" onclick="location.href='signUp'" /></li>
+									<li><input type="submit" value="LogIn" class="primary" /></li>
+									<li><input type="button" value="SignUp"
+										onclick="location.href='signUp'" /></li>
 								</ul>
 							</div>
 						</div>

@@ -32,38 +32,55 @@ active>a.tb {
 <body class="is-preload landing">
 	<div id="page-wrapper">
 
-			<!-- Header -->
-				<header id="header">
-					<h1 id="logo"><a href="mainForm">BAEKSEON's PIC.</a></h1>
-					<nav id="nav">
+		<!-- Header -->
+		<header id="header">
+			<h1 id="logo">
+				<a href="mainForm">BAEKSEON's PIC.</a>
+			</h1>
+			<nav id="nav">
+				<ul>
+					<li><a href="mainForm">Home</a></li>
+					<li><a href="#">Category</a>
 						<ul>
-							<li><a href="mainForm">Home</a></li>
-							<li>
-								<a href="#">Category</a>
-								<ul>
-									<li><a href="picList?cat=Music">Music</a></li>
-									<li><a href="picList?cat=Food">Food</a></li>
-									<li><a href="picList?cat=Fashion">Fashion</a></li>
-									<li><a href="picList?cat=Car">Car</a></li>
-									<li><a href="picList?cat=Travel">Travel</a></li>
-								</ul>
-							</li>
-							<li><a href="#">Board</a>
-								<ul>
-									<li><a href="brdList?cat=Free">Free</a></li>
-									<li><a href="brdList?cat=Guest">Guest</a></li>
-								</ul>
-							</li>
-							<li><a href="logIn" class="button primary">Log In</a></li>
-						</ul>
-					</nav>
-				</header>
+							<li><a href="picList?cat=Music">Music</a></li>
+							<li><a href="picList?cat=Food">Food</a></li>
+							<li><a href="picList?cat=Fashion">Fashion</a></li>
+							<li><a href="picList?cat=Car">Car</a></li>
+							<li><a href="picList?cat=Travel">Travel</a></li>
+						</ul></li>
+					<li><a href="#">Board</a>
+						<ul>
+							<li><a href="brdList?cat=Free">Free</a></li>
+							<li><a href="brdList?cat=Guest">Guest</a></li>
+						</ul></li>
+					<c:catch>
+						<c:choose>
+							<c:when test="${empty sessionScope.usrId}">
+								<li><a href="logIn" class="button primary">Log In</a></li>
+							</c:when>
+							<c:otherwise>
+								<c:choose>
+									<c:when test="${sessionScope.usrId eq 'admin' }">
+										<li><a href="#" class="icon solid fa-user-circle">${sessionScope.usrName}(${sessionScope.usrId})</a></li>
+										<li><a href="logOut" class="button primary">Log Out</a></li>
+									</c:when>
+									<c:otherwise>
+										<li><a href="#" class="icon solid fa-user-circle">${sessionScope.usrName}(${sessionScope.usrId})</a></li>
+										<li><a href="logOut" class="button primary">Log Out</a></li>
+									</c:otherwise>
+								</c:choose>
+							</c:otherwise>
+						</c:choose>
+					</c:catch>
+				</ul>
+			</nav>
+		</header>
 
 		<!-- Banner -->
 		<div id="main" class="wrapper style1">
 			<div class="container">
 				<header>
-					<h2>${pagevo.cat} Board</h2>
+					<h2>${pagevo.cat}Board</h2>
 				</header>
 				<section>
 					<div class="row gtr-0 gtr-uniform">
@@ -90,7 +107,7 @@ active>a.tb {
 									<c:forEach items="${brdlist}" var="vo" varStatus="status">
 										<tr>
 											<td>${status.count + pageVO.perPageNum * (pageVO.page -1)}</td>
-											<td><a href="brdView?no=${vo.no}&cat=${pagevo.cat}" class="tb">${vo.title}</a></td>
+											<td><a href="brdView?no=${vo.no}" class="tb">${vo.title}</a></td>
 											<td><a href="#" class="tb">${vo.name}</a></td>
 											<td>${vo.views}</td>
 										</tr>
@@ -104,11 +121,9 @@ active>a.tb {
 													class="tb">[이전]</a>
 											</c:if> <c:forEach begin="${pageVO.startPage}"
 												end="${pageVO.endPage}" var="idx">
-												<a href="brdList?page=${idx}&cat=${pageVO.cat}"
-													class="tb">${idx}</a>
+												<a href="brdList?page=${idx}&cat=${pageVO.cat}" class="tb">${idx}</a>
 											</c:forEach> <c:if test="${pageVO.next}">
-												<a
-													href="brdList?page=${pageVO.endPage+1}&cat=${pageVO.cat}"
+												<a href="brdList?page=${pageVO.endPage+1}&cat=${pageVO.cat}"
 													class="tb">[Next]</a>
 											</c:if></td>
 									</tr>

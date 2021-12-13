@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -16,28 +17,44 @@
 		<!-- Header -->
 		<header id="header">
 			<h1 id="logo">
-				<a href="after_mainForm" class="icon solid fa-camera">
+				<a href="mainForm" class="icon solid fa-camera">
 					BAEKSEON's PIC.</a>
 			</h1>
 			<nav id="nav">
 				<ul>
-					<li><a href="after_mainForm">Home</a></li>
+					<li><a href="mainForm">Home</a></li>
 					<li><a href="#">Category</a>
 						<ul>
-							<li><a href="after_picList?cat=Music">Music</a></li>
-							<li><a href="after_picList?cat=Food">Food</a></li>
-							<li><a href="after_picList?cat=Fashion">Fashion</a></li>
-							<li><a href="after_picList?cat=Car">Car</a></li>
-							<li><a href="after_picList?cat=Travel">Travel</a></li>
+							<li><a href="picList?cat=Music">Music</a></li>
+							<li><a href="picList?cat=Food">Food</a></li>
+							<li><a href="picList?cat=Fashion">Fashion</a></li>
+							<li><a href="picList?cat=Car">Car</a></li>
+							<li><a href="picList?cat=Travel">Travel</a></li>
 						</ul></li>
 					<li><a href="#">Board</a>
 						<ul>
-							<li><a href="after_brdList?cat=Free">Free</a></li>
-							<li><a href="after_brdList?cat=Guest">Guest</a></li>
+							<li><a href="brdList?cat=Free">Free</a></li>
+							<li><a href="brdList?cat=Guest">Guest</a></li>
 						</ul></li>
-					<li><a href="#" class="icon solid fa-user-circle">${sessionScope.usrName}(${sessionScope.usrId})
-					</a></li>
-					<li><a href="logOut" class="button primary">Log Out</a></li>
+					<c:catch>
+						<c:choose>
+							<c:when test="${empty sessionScope.usrId}">
+								<li><a href="logIn" class="button primary">Log In</a></li>
+							</c:when>
+							<c:otherwise>
+								<c:choose>
+									<c:when test="${sessionScope.usrId eq 'admin' }">
+										<li><a href="#" class="icon solid fa-user-circle">${sessionScope.usrName}(${sessionScope.usrId})</a></li>
+										<li><a href="logOut" class="button primary">Log Out</a></li>
+									</c:when>
+									<c:otherwise>
+										<li><a href="#" class="icon solid fa-user-circle">${sessionScope.usrName}(${sessionScope.usrId})</a></li>
+										<li><a href="logOut" class="button primary">Log Out</a></li>
+									</c:otherwise>
+								</c:choose>
+							</c:otherwise>
+						</c:choose>
+					</c:catch>
 				</ul>
 			</nav>
 		</header>
@@ -48,8 +65,8 @@
 				<h2>New Pic</h2>
 				<section class="special">
 					<form method="post" action="picSave" encType="multipart/form-data">
-						<input type="hidden" name="id" value=${sessionScope.usrId} /> <input
-							type="hidden" name="name" value=${sessionScope.usrName} />
+						<input type="hidden" name="id" value=${sessionScope.usrId } /> <input
+							type="hidden" name="name" value=${sessionScope.usrName } />
 						<div class="row gtr-uniform gtr-50">
 							<div class="col-12">
 								<select name="cat" id="cat">
@@ -66,7 +83,9 @@
 									placeholder="Title" />
 							</div>
 							<div class="col-2" style="text-align: left">
-								<label for="bizFile" class="button" >Upload</label><input type="file" name="file" accept="image/*" id="bizFile" style="display: none" />
+								<label for="bizFile" class="button">Upload</label><input
+									type="file" name="file" accept="image/*" id="bizFile"
+									style="display: none" />
 							</div>
 							<div class="col-10" style="text-align: left">
 								<span id="fileName" class="button disabled">Attachments...</span>
