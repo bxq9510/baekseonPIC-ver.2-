@@ -108,4 +108,68 @@ public class PicController {
 		brdService.insert(brdvo);
 		return "redirect:/brdList?cat="+brdvo.getCat();
 	}
+	@RequestMapping(value = "/admin_Boa", method = RequestMethod.GET)
+	public String admin_Board(Locale locale, Model model) throws Exception{
+		PageVO pagepic = new PageVO();
+		if(pagepic.getPage() == null) {
+			pagepic.setPage(1);
+		}
+		pagepic.setPerPageNum(5);
+		pagepic.setTotalCount(picService.piccnt());
+		model.addAttribute("piclist", picService.selectAllPic(pagepic));
+		model.addAttribute("pagepic", pagepic);
+		model.addAttribute("attachlist", picService.selectAdminAttach(pagepic));
+		
+		PageVO pagebrd = new PageVO();
+		if(pagebrd.getPage() == null) {
+			pagebrd.setPage(1);
+		}
+		pagebrd.setPerPageNum(5);
+		pagebrd.setTotalCount(brdService.brdcnt());
+		model.addAttribute("brdlist", brdService.selectAllBrd(pagebrd));
+		model.addAttribute("pagebrd", pagebrd);
+		return "usr/admin_Pic";
+	}
+	@RequestMapping(value = "/admin_Board", method = RequestMethod.GET)
+	public String admin_pic(@ModelAttribute PageVO pagepic, Locale locale, Model model) throws Exception{
+		if(pagepic.getPage() == null) {
+			pagepic.setPage(1);
+		}
+		pagepic.setPerPageNum(5);
+		pagepic.setTotalCount(picService.piccnt());
+		model.addAttribute("piclist", picService.selectAllPic(pagepic));
+		model.addAttribute("pagepic", pagepic);
+		model.addAttribute("attachlist", picService.selectAdminAttach(pagepic));
+
+		PageVO pagebrd = new PageVO();
+		if(pagebrd.getPage() == null) {
+			pagebrd.setPage(1);
+		}
+		pagebrd.setPerPageNum(5);
+		pagebrd.setTotalCount(brdService.brdcnt());
+		model.addAttribute("brdlist", brdService.selectAllBrd(pagebrd));
+		model.addAttribute("pagebrd", pagebrd);
+		return "brd/admin_Pic";
+	}
+	@RequestMapping(value = "/admin_brd", method = RequestMethod.GET)
+	public String admin_brd(@ModelAttribute PageVO pagebrd, Locale locale, Model model) throws Exception{
+		PageVO pagepic = new PageVO();
+		if(pagepic.getPage() == null) {
+			pagepic.setPage(1);
+		}
+		pagepic.setPerPageNum(5);
+		pagepic.setTotalCount(picService.piccnt());
+		model.addAttribute("piclist", picService.selectAllPic(pagepic));
+		model.addAttribute("pagepic", pagepic);
+		model.addAttribute("attachlist", picService.selectAdminAttach(pagepic));
+		
+		if(pagebrd.getPage() == null) {
+			pagebrd.setPage(1);
+		}
+		pagebrd.setPerPageNum(5);
+		pagebrd.setTotalCount(brdService.brdcnt());
+		model.addAttribute("brdlist", brdService.selectAllBrd(pagebrd));
+		model.addAttribute("pagebrd", pagebrd);
+		return "brd/admin_Pic";
+	}
 }

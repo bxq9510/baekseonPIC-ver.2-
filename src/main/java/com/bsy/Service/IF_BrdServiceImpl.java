@@ -34,5 +34,9 @@ public class IF_BrdServiceImpl implements IF_BrdService {
 	public void updateView(int no) throws Exception {
 		brddao.updateView(no);
 	}
+	@Override
+	public List<BrdVO> selectAllBrd(PageVO pagevo) throws Exception {
+		return brddao.selectAllBrd(pagevo);
+	}
 
 }

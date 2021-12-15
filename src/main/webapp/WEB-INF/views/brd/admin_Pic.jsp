@@ -11,6 +11,24 @@
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/resources/assets/css/main.css" />
 </head>
+<style>
+a.tb {
+	border: 0;
+	color: inherit;
+	display: inline-block;
+	height: inherit;
+	line-height: inherit;
+	outline: 0;
+}
+
+a.tb:before {
+	margin-right: 0.5em;
+}
+
+active>a.tb {
+	color: #e44c65;
+}
+</style>
 <body class="is-preload landing">
 	<div id="page-wrapper">
 
@@ -67,33 +85,102 @@
 		<div id="main" class="wrapper style1">
 			<div class="container">
 				<header class="major">
-					<h2>${pagevo.cat}</h2>
+					<h2>Post</h2>
+				</header>
+				<header>
+					<h3>PIC List</h3>
 				</header>
 				<section>
-					<div class="box alt">
-						<div class="row gtr-50 gtr-uniform">
-							<div class="col-1 off-10">
-								<input type="button" value="New PIC"
-									onclick="location.href='after_inputPic'" />
-							</div>
-							<c:forEach items="${piclist}" var="vo">
-								<div class="col-4 col-6-xsmall">
-									<a href="picView?no=${vo.pic_no}" class="image fit"><img
-										src="${pageContext.request.contextPath }/download?filename=${vo.filename}" /></a>
-								</div>
-							</c:forEach>
-							<table style="margin-top: 2em">
+					<div class="row gtr-0 gtr-uniform">
+						<div class="row col-1 off-10">&nbsp;</div>
+					</div>
+					<div>
+						<div class="table-wrapper">
+							<table>
+								<thead>
+									<tr>
+										<th>No.</th>
+										<th style="width: 10%">PIC</th>
+										<th style="width: 40%">Title</th>
+										<th>Name</th>
+										<th>Views</th>
+										<th style="width: 20%">Edit / Del</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach items="${piclist}" var="vo" varStatus="status">
+										<tr style="vertical-align: middle">
+											<td>${status.count + pagepic.perPageNum * (pagepic.page -1)}</td>
+											<td><img src="${pageContext.request.contextPath }/download?filename=${attachlist.get(status.count + pagepic.perPageNum * (pagepic.page -1)-1).getFilename()}" style="width: 100%" /></td>
+											<td><a href="picView?no=${vo.no}" class="tb">${vo.title}</a></td>
+											<td><a href="#" class="tb">${vo.name}</a></td>
+											<td>${vo.views}</td>
+											<td><a href="#" class="icon solid fa-edit">수정 </a>/ 
+												<a href="#" class="icon solid fa-trash">삭제</a></td>
+										</tr>
+									</c:forEach>
+								</tbody>
 								<tfoot>
 									<tr>
-										<td><c:if test="${pageVO.prev}">
+										<td><c:if test="${pagepic.prev}">
 												<a
-													href="brdList?page=${pageVO.startPage-1}&cat=${pageVO.cat}"
+													href="admin_Board?page=${pagepic.startPage-1}"
 													class="tb">[이전]</a>
-											</c:if> <c:forEach begin="${pageVO.startPage}"
-												end="${pageVO.endPage}" var="idx">
-												<a href="brdList?page=${idx}&cat=${pageVO.cat}" class="tb">${idx}</a>
-											</c:forEach> <c:if test="${pageVO.next}">
-												<a href="brdList?page=${pageVO.endPage+1}&cat=${pageVO.cat}"
+											</c:if> <c:forEach begin="${pagepic.startPage}"
+												end="${pagepic.endPage}" var="idx">
+												<a href="admin_Board?page=${idx}" class="tb">${idx}</a>
+											</c:forEach> <c:if test="${pagepic.next}">
+												<a href="admin_Board?page=${pagepic.endPage+1}"
+													class="tb">[Next]</a>
+											</c:if></td>
+									</tr>
+								</tfoot>
+							</table>
+						</div>
+					</div>
+				</section>
+				<header>
+					<h3>Board List</h3>
+				</header>
+				<section>
+					<div class="row gtr-0 gtr-uniform">
+						<div class="row col-1 off-10">&nbsp;</div>
+					</div>
+					<div>
+						<div class="table-wrapper">
+							<table>
+								<thead>
+									<tr>
+										<th>No.</th>
+										<th style="width: 40%;">Title</th>
+										<th>Name</th>
+										<th>Views</th>
+										<th style="width: 20%">Edit / Del</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach items="${brdlist}" var="vo" varStatus="status">
+										<tr>
+											<td>${status.count + pagebrd.perPageNum * (pagebrd.page -1)}</td>
+											<td><a href="brdView?no=${vo.no}" class="tb">${vo.title}</a></td>
+											<td><a href="#" class="tb">${vo.name}</a></td>
+											<td>${vo.views}</td>
+											<td><a href="#" class="icon solid fa-edit">수정 </a>/ 
+												<a href="#" class="icon solid fa-trash">삭제</a></td>
+										</tr>
+									</c:forEach>
+								</tbody>
+								<tfoot>
+									<tr>
+										<td><c:if test="${pagebrd.prev}">
+												<a
+													href="admin_brd?page=${pagebrd.startPage-1}"
+													class="tb">[이전]</a>
+											</c:if> <c:forEach begin="${pagebrd.startPage}"
+												end="${pagebrd.endPage}" var="idx">
+												<a href="admin_brd?page=${idx}" class="tb">${idx}</a>
+											</c:forEach> <c:if test="${pagebrd.next}">
+												<a href="admin_brd?page=${pagebrd.endPage+1}"
 													class="tb">[Next]</a>
 											</c:if></td>
 									</tr>

@@ -66,4 +66,14 @@ public class IF_PicServiceImpl implements IF_PicService {
 		return picdao.selectAttach(no);
 	}
 
+	@Override
+	public List<PicVO> selectAllPic(PageVO pagevo) throws Exception {
+		return picdao.selectAllPic(pagevo);
+	}
+
+	@Override
+	public List<AttachVO> selectAdminAttach(PageVO pagevo) throws Exception {
+		return picdao.selectAdminAttach(pagevo);
+	}
+
 }

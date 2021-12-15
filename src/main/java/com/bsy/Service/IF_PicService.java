@@ -15,4 +15,6 @@ public interface IF_PicService {
 	public List<AttachVO> selectAllAttach(String cat) throws Exception;
 	public List<String> selectAttach(int no) throws Exception;
 	public int attachcnt() throws Exception;
+	public List<PicVO> selectAllPic(PageVO pagevo) throws Exception;
+	public List<AttachVO> selectAdminAttach(PageVO pagevo) throws Exception;
 }

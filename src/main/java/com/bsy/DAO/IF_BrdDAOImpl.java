@@ -34,5 +34,9 @@ public class IF_BrdDAOImpl implements IF_BrdDAO {
 	public void updateView(int no) throws Exception {
 		sqlSession.update(mapperquery+".updateView", no);
 	}
+	@Override
+	public List<BrdVO> selectAllBrd(PageVO pagevo) throws Exception {
+		return sqlSession.selectList(mapperquery+".selectallbrd", pagevo);
+	}
 
 }

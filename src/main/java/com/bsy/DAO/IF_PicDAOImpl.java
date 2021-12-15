@@ -64,5 +64,14 @@ public class IF_PicDAOImpl implements IF_PicDAO {
 	public int attachcnt() throws Exception {
 		return sqlSession.selectOne(mapperquery+".attachcnt");
 	}
+	@Override
+	public List<PicVO> selectAllPic(PageVO pagevo) throws Exception {
+		return sqlSession.selectList(mapperquery+".selectallpic", pagevo);
+	}
+
+	@Override
+	public List<AttachVO> selectAdminAttach(PageVO pagevo) throws Exception {
+		return sqlSession.selectList(mapperquery + ".selectadminattach", pagevo);
+	}
 
 }

@@ -17,19 +17,18 @@
 		<!-- Header -->
 		<header id="header">
 			<h1 id="logo">
-				<a href="mainForm" class="icon solid fa-camera">
-					BAEKSEON's PIC.</a>
+				<a href="mainForm" class="icon solid fa-camera"> BAEKSEON's PIC.</a>
 			</h1>
 			<nav id="nav">
 				<ul>
 					<li><a href="mainForm">Home</a></li>
 					<li><a href="#">Category</a>
 						<ul>
+							<li><a href="picList?cat=Travel">Travel</a></li>
 							<li><a href="picList?cat=Music">Music</a></li>
 							<li><a href="picList?cat=Food">Food</a></li>
 							<li><a href="picList?cat=Fashion">Fashion</a></li>
 							<li><a href="picList?cat=Car">Car</a></li>
-							<li><a href="picList?cat=Travel">Travel</a></li>
 						</ul></li>
 					<li><a href="#">Board</a>
 						<ul>
@@ -44,6 +43,11 @@
 							<c:otherwise>
 								<c:choose>
 									<c:when test="${sessionScope.usrId eq 'admin' }">
+										<li><a href="#">Admin</a>
+											<ul>
+												<li><a href="admin_Usr">User</a></li>
+												<li><a href="admin_Board">Post</a></li>
+											</ul></li>
 										<li><a href="#" class="icon solid fa-user-circle">${sessionScope.usrName}(${sessionScope.usrId})</a></li>
 										<li><a href="logOut" class="button primary">Log Out</a></li>
 									</c:when>

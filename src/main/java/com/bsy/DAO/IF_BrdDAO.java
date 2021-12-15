@@ -11,4 +11,5 @@ public interface IF_BrdDAO {
 	public List<BrdVO> selectAll(PageVO pagevo) throws Exception;
 	public BrdVO selectOne(int no) throws Exception;
 	public void updateView(int no) throws Exception;
+	public List<BrdVO> selectAllBrd(PageVO pagevo) throws Exception;
 }

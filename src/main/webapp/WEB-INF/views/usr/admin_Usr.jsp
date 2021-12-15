@@ -11,6 +11,24 @@
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/resources/assets/css/main.css" />
 </head>
+<style>
+a.tb {
+	border: 0;
+	color: inherit;
+	display: inline-block;
+	height: inherit;
+	line-height: inherit;
+	outline: 0;
+}
+
+a.tb:before {
+	margin-right: 0.5em;
+}
+
+active>a.tb {
+	color: #e44c65;
+}
+</style>
 <body class="is-preload landing">
 	<div id="page-wrapper">
 
@@ -67,27 +85,62 @@
 		<div id="main" class="wrapper style1">
 			<div class="container">
 				<header class="major">
-					<h2>Log In</h2>
+					<h2>User</h2>
 				</header>
-				<section class="special">
-					<form action="loginProcess" method="post">
-						<div class="row gtr-uniform gtr-50">
-							<div class="col-4 off-4 col-12-xsmall">
-								<input type="text" name="id" id="id" value="" placeholder="ID" />
-							</div>
-							<div class="col-4 off-4 col-12-xsmall">
-								<input type="password" name="pw" id="pw" value=""
-									placeholder="PASSWORD" />
-							</div>
-							<div class="col-4 off-4">
-								<ul class="actions">
-									<li><input type="submit" value="LogIn" class="primary" /></li>
-									<li><input type="button" value="SignUp"
-										onclick="location.href='signUp'" /></li>
-								</ul>
-							</div>
+				<section>
+					<div class="row gtr-0 gtr-uniform">
+						<div class="row col-1 off-10">
+							<input type="button" value="New Post"
+								onclick="location.href='after_inputBrd'" />
 						</div>
-					</form>
+					</div>
+					<div class="row gtr-0 gtr-uniform">
+						<div class="row col-1 off-10">&nbsp;</div>
+					</div>
+					<div>
+						<div class="table-wrapper">
+							<table>
+								<thead>
+									<tr>
+										<th>No.</th>
+										<th>ID</th>
+										<th>PW</th>
+										<th>NAME</th>
+										<th>Joining Date</th>
+										<th>Edit / Del</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach items="${usrlist}" var="vo" varStatus="status">
+										<tr>
+											<td>${status.count + pageVO.perPageNum * (pageVO.page -1)}</td>
+											<td>${vo.id}</td>
+											<td>${vo.pw}</td>
+											<td>${vo.name}</td>
+											<td>${vo.day.substring(0,9)}</td>
+											<td><a href="#" class="icon solid fa-edit">수정 </a>/ 
+												<a href="#" class="icon solid fa-trash">삭제</a></td>
+										</tr>
+									</c:forEach>
+								</tbody>
+								<tfoot>
+									<tr>
+										<td><c:if test="${pageusr.prev}">
+												<a
+													href="brdList?page=${pageusr.startPage-1}&cat=${pageusr.cat}"
+													class="tb">[이전]</a>
+											</c:if> <c:forEach begin="${pageusr.startPage}"
+												end="${pageusr.endPage}" var="idx">
+												<a href="brdList?page=${idx}&cat=${pageusr.cat}" class="tb">${idx}</a>
+											</c:forEach> <c:if test="${pageusr.next}">
+												<a href="brdList?page=${pageusr.endPage+1}&cat=${pageusr.cat}"
+													class="tb">[Next]</a>
+											</c:if></td>
+									</tr>
+								</tfoot>
+							</table>
+						</div>
+					</div>
 				</section>
 			</div>
 		</div>

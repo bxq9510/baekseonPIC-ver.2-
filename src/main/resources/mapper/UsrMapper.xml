@@ -11,4 +11,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectOne" resultType="com.bsy.VO.UsrVO">
 		select * from pusr where id = #{uid}
 	</select>
+	<select id="usrcnt" resultType="int">
+		select count(*) from pusr
+	</select>
+	<select id="selectall" resultType="com.bsy.VO.UsrVO">
+		select * from pusr order by day desc
+	</select>
 </mapper>

@@ -45,7 +45,7 @@
 									<c:when test="${sessionScope.usrId eq 'admin' }">
 										<li><a href="#">Admin</a>
 											<ul>
-												<li><a href="admin_Usr">User</a></li>
+												<li><a href="brdList?cat=Free">User</a></li>
 												<li><a href="admin_Board">Post</a></li>
 											</ul></li>
 										<li><a href="#" class="icon solid fa-user-circle">${sessionScope.usrName}(${sessionScope.usrId})</a></li>
@@ -67,23 +67,33 @@
 		<div id="main" class="wrapper style1">
 			<div class="container">
 				<header class="major">
-					<h2>Log In</h2>
+					<h2>My Page (${usr.name})</h2>
 				</header>
-				<section class="special">
-					<form action="loginProcess" method="post">
+				<section>
+					<form action="addUsr" method="post">
 						<div class="row gtr-uniform gtr-50">
-							<div class="col-4 off-4 col-12-xsmall">
-								<input type="text" name="id" id="id" value="" placeholder="ID" />
+							<div class="col-3 off-4 col-12-xsmall">
+								<input type="text" name="id" id="id" value=""
+									placeholder="CREATE YOUR ID" />
+							</div>
+							<div class="col-1">
+								<input type="button" value="Check" />
 							</div>
 							<div class="col-4 off-4 col-12-xsmall">
 								<input type="password" name="pw" id="pw" value=""
 									placeholder="PASSWORD" />
 							</div>
+							<div class="col-4 off-4 col-12-xsmall">
+								<input type="password" value="" placeholder="VERIFY PASSWORD" />
+							</div>
+							<div class="col-4 off-4 col-12-xsmall">
+								<input type="text" name="name" id="name" value="${usrvo.name }"
+									placeholder="CHOOSE YOUR USERNAME" />
+							</div>
 							<div class="col-4 off-4">
 								<ul class="actions">
-									<li><input type="submit" value="LogIn" class="primary" /></li>
-									<li><input type="button" value="SignUp"
-										onclick="location.href='signUp'" /></li>
+									<li><input type="submit" value="Submit" class="primary" /></li>
+									<li><input type="reset" value="Reset" /></li>
 								</ul>
 							</div>
 						</div>

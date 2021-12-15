@@ -19,6 +19,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		(select rownum as num, b.* from	(select * from board where cat=#{cat} order by day desc) b)
 		where num between #{startNo}+1 and #{startNo} + #{perPageNum}
 	</select>
+	<select id="selectallbrd" resultType="com.bsy.VO.BrdVO">
+		select * from
+		(select rownum as num, b.* from	(select * from board order by day desc) b)
+		where num between #{startNo}+1 and #{startNo} + #{perPageNum}
+	</select>
 	<update id="updateView">
 		update board set views=views+1 where no = #{no}
 	</update>

@@ -26,6 +26,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		(select rownum as num, b.* from	(select * from pic where cat=#{cat} order by day desc) b)
 		where num between #{startNo}+1 and #{startNo} + #{perPageNum}
 	</select>
+	<select id="selectallpic" resultType="com.bsy.VO.PicVO">
+		select * from
+		(select rownum as num, b.* from	(select * from pic order by day desc) b)
+		where num between #{startNo}+1 and #{startNo} + #{perPageNum}
+	</select>
 	<select id="getseq" resultType="int">
 		select pic_seq.nextval from dual
 	</select>
@@ -34,6 +39,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	<select id="selectallattach" resultType="com.bsy.VO.AttachVO">
 		select * from pic_attach where cat=#{cat} order by no desc		
+	</select>
+	<select id="selectadminattach" resultType="com.bsy.VO.AttachVO">
+		select * from pic_attach order by no desc
 	</select>
 	<update id="updateView">
 		update pic set views=views+1 where no = #{no}

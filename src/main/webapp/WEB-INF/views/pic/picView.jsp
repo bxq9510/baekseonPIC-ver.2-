@@ -24,11 +24,11 @@
 					<li><a href="mainForm">Home</a></li>
 					<li><a href="#">Category</a>
 						<ul>
+							<li><a href="picList?cat=Travel">Travel</a></li>
 							<li><a href="picList?cat=Music">Music</a></li>
 							<li><a href="picList?cat=Food">Food</a></li>
 							<li><a href="picList?cat=Fashion">Fashion</a></li>
 							<li><a href="picList?cat=Car">Car</a></li>
-							<li><a href="picList?cat=Travel">Travel</a></li>
 						</ul></li>
 					<li><a href="#">Board</a>
 						<ul>
@@ -43,6 +43,11 @@
 							<c:otherwise>
 								<c:choose>
 									<c:when test="${sessionScope.usrId eq 'admin' }">
+										<li><a href="#">Admin</a>
+											<ul>
+												<li><a href="admin_Usr">User</a></li>
+												<li><a href="admin_Board">Post</a></li>
+											</ul></li>
 										<li><a href="#" class="icon solid fa-user-circle">${sessionScope.usrName}(${sessionScope.usrId})</a></li>
 										<li><a href="logOut" class="button primary">Log Out</a></li>
 									</c:when>
@@ -87,7 +92,7 @@
 											</c:when>
 											<c:otherwise>
 												<c:choose>
-													<c:when test="${sessionScope.usrName eq brd.name }">
+													<c:when test="${sessionScope.usrName eq pic.name }">
 														/ <a href="#" class="icon solid fa-edit"> 수정 </a>/ 
 														<a href="#" class="icon solid fa-trash"> 삭제</a>
 													</c:when>
@@ -112,7 +117,7 @@
 							</div>
 							<ul class="col-12 alt" style="text-align: left">
 								<c:forEach items="${comlist}" var="vo">
-									<li>${vo.name}<sub>(${vo.day.substring(5,19)})</sub> :
+									<li><b>${vo.name}</b><i>(${vo.day.substring(5,19)})</i> :
 										${vo.com}
 									</li>
 								</c:forEach>
